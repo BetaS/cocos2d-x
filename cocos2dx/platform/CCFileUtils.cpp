@@ -1,4 +1,4 @@
-/****************************************************************************
+﻿/****************************************************************************
 Copyright (c) 2010-2013 cocos2d-x.org
 
 http://www.cocos2d-x.org
@@ -637,7 +637,7 @@ std::string CCFileUtils::fullPathForFilename(const char* pszFileName)
         }
     }
     
-    //CCLOG("cocos2d: fullPathForFilename: No file found at %s. Possible missing file.", pszFileName);
+    CCLOG("cocos2d: fullPathForFilename: No file found at %s. Possible missing file.", pszFileName);
 
     // The file wasn't found, return the file name passed in.
     return pszFileName;

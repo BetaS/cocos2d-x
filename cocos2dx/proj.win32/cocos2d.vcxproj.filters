@@ -952,5 +952,8 @@
     <ClInclude Include="..\support\component\CCComponentContainer.h">
       <Filter>support\component</Filter>
     </ClInclude>
+    <ClInclude Include="..\include\MultiByteConverter.h">
+      <Filter>include</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

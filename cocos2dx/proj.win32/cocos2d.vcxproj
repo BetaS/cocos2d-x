@@ -313,6 +313,7 @@ xcopy /Y /Q "$(ProjectDir)..\platform\third_party\win32\libraries\*.*" "$(OutDir
     <ClInclude Include="..\include\CCProtocols.h" />
     <ClInclude Include="..\include\ccTypes.h" />
     <ClInclude Include="..\include\cocos2d.h" />
+    <ClInclude Include="..\include\MultiByteConverter.h" />
     <ClInclude Include="..\label_nodes\CCLabelAtlas.h" />
     <ClInclude Include="..\label_nodes\CCLabelBMFont.h" />
     <ClInclude Include="..\label_nodes\CCLabelTTF.h" />

@@ -1,4 +1,4 @@
-#include "CCApplication.h"
+﻿#include "CCApplication.h"
 #include "CCEGLView.h"
 #include "CCDirector.h"
 #include <algorithm>

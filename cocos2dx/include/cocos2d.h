@@ -1,4 +1,4 @@
-/****************************************************************************
+﻿/****************************************************************************
 Copyright (c) 2010-2012 cocos2d-x.org
 Copyright (c) 2008-2010 Ricardo Quesada
 Copyright (c) 2011      Zynga Inc.
@@ -298,6 +298,15 @@ THE SOFTWARE.
 // component
 #include "support/component/CCComponent.h"
 #include "support/component/CCComponentContainer.h"
+
+#ifdef WIN32
+#include "MultiByteConverter.h"
+#define _AtoU8( str )	*MultiByteConverter( str, CP_ACP, CP_UTF8 )
+#define _U8toA( str )	*MultiByteConverter( str, CP_UTF8, CP_ACP )
+#else
+#define _AtoU8( str )	(str)
+#define _U8toA( str )	(str)
+#endif
 
 NS_CC_BEGIN
 
