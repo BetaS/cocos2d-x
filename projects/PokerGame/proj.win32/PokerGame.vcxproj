@@ -146,6 +146,7 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClCompile Include="..\Classes\RobbyScene.cpp" />
     <ClCompile Include="..\Classes\ui\CustomTableViewCell.cpp" />
     <ClCompile Include="..\Classes\ui\ScrollBar.cpp" />
+    <ClCompile Include="..\Classes\ui\StringPopup.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -170,6 +171,7 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClInclude Include="..\Classes\RobbyScene.h" />
     <ClInclude Include="..\Classes\ui\CustomTableViewCell.h" />
     <ClInclude Include="..\Classes\ui\ScrollBar.h" />
+    <ClInclude Include="..\Classes\ui\StringPopup.h" />
     <ClInclude Include="main.h" />
   </ItemGroup>
   <ItemGroup>

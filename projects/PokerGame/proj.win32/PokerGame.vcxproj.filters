@@ -78,6 +78,9 @@
     <ClCompile Include="..\Classes\json\Convert.cpp">
       <Filter>Classes\net\json</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\ui\StringPopup.cpp">
+      <Filter>Classes\ui</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -145,6 +148,9 @@
     </ClInclude>
     <ClInclude Include="..\Classes\json\JsonBox\IndentCanceller.h">
       <Filter>Classes\net\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ui\StringPopup.h">
+      <Filter>Classes\ui</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
