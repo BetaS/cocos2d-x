@@ -1,0 +1,150 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="win32">
+      <UniqueIdentifier>{84a8ebd7-7cf0-47f6-b75e-d441df67da40}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes">
+      <UniqueIdentifier>{bb6c862e-70e9-49d9-81b7-3829a6f50471}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\data">
+      <UniqueIdentifier>{b325faf7-0b4e-49cd-871a-b2c7f7273307}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\net">
+      <UniqueIdentifier>{e08de9c1-2058-448c-b31e-4680044400ab}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\ui">
+      <UniqueIdentifier>{2d506444-3162-484a-9108-9a17f57e8d0c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\net\json">
+      <UniqueIdentifier>{929f8bcd-6e29-4b76-b838-b9616870864d}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>win32</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\AppDelegate.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\data\CardSlot.cpp">
+      <Filter>Classes\data</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\data\Card.cpp">
+      <Filter>Classes\data</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\net\RPCClient.cpp">
+      <Filter>Classes\net</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\net\DeviceInfo.cpp">
+      <Filter>Classes\net</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\GameScene.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\LoginScene.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\RobbyScene.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ui\CustomTableViewCell.cpp">
+      <Filter>Classes\ui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ui\ScrollBar.cpp">
+      <Filter>Classes\ui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\json\Escaper.cpp">
+      <Filter>Classes\net\json</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\json\IndentCanceller.cpp">
+      <Filter>Classes\net\json</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\json\Indenter.cpp">
+      <Filter>Classes\net\json</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\json\Object.cpp">
+      <Filter>Classes\net\json</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\json\SolidusEscaper.cpp">
+      <Filter>Classes\net\json</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\json\Value.cpp">
+      <Filter>Classes\net\json</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\json\Array.cpp">
+      <Filter>Classes\net\json</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\json\Convert.cpp">
+      <Filter>Classes\net\json</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="main.h">
+      <Filter>win32</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\AppDelegate.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\data\Card.h">
+      <Filter>Classes\data</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\data\CardSlot.h">
+      <Filter>Classes\data</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\net\RPCClient.h">
+      <Filter>Classes\net</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\net\DeviceInfo.h">
+      <Filter>Classes\net</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\GameScene.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\LoginScene.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\RobbyScene.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ui\CustomTableViewCell.h">
+      <Filter>Classes\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ui\ScrollBar.h">
+      <Filter>Classes\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\json\JsonBox.h">
+      <Filter>Classes\net\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\json\JsonBox\Indenter.h">
+      <Filter>Classes\net\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\json\JsonBox\Object.h">
+      <Filter>Classes\net\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\json\JsonBox\OutputFilter.h">
+      <Filter>Classes\net\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\json\JsonBox\SolidusEscaper.h">
+      <Filter>Classes\net\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\json\JsonBox\Value.h">
+      <Filter>Classes\net\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\json\JsonBox\Array.h">
+      <Filter>Classes\net\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\json\JsonBox\Convert.h">
+      <Filter>Classes\net\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\json\JsonBox\Escaper.h">
+      <Filter>Classes\net\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\json\JsonBox\Grammar.h">
+      <Filter>Classes\net\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\json\JsonBox\IndentCanceller.h">
+      <Filter>Classes\net\json</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
