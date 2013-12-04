@@ -155,7 +155,19 @@ void LoginScene::menuLoginCallback(CCObject* pSender)
 
 	if(&authkey != NULL && authkey.length() == 64)
 	{
-		CCDirector::sharedDirector()->replaceScene(CCTransitionFade::create(0.5f, RobbyScene::scene()));
+		params.clear();
+		params["authkey"] = JsonBox::Value(authkey);
+		params["device"] = JsonBox::Value(device);
+		g_Server.request(result, "authAuthenticate", params);
+
+		if((result["result"]["items"][size_t(0)]["result"]).getBoolean()) 
+		{
+			CCDirector::sharedDirector()->replaceScene(CCTransitionFade::create(0.5f, RobbyScene::scene()));
+		}
+		else
+		{
+			CCMessageBox("서버 세션 에러.", "ERROR");
+		}
 	}
 	else
 	{

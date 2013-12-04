@@ -52,7 +52,7 @@ bool RobbyScene::init()
         count++;
     }
     
-    CCTableView* tableView = CCTableView::create(this, CCSizeMake(1280, 720));
+    CCTableView* tableView = CCTableView::create(this, CCSizeMake(720, 720));
     tableView->setDirection(kCCScrollViewDirectionVertical);
     tableView->setVerticalFillOrder(kCCTableViewFillTopDown);
     
