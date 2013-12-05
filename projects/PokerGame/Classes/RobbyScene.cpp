@@ -36,10 +36,10 @@ bool RobbyScene::init()
                                         menu_selector(RobbyScene::menuCloseCallback) );
     pCloseItem->setPosition( ccp(CCDirector::sharedDirector()->getWinSize().width - 20, 20) );
     
-    CCMenuItemLabel* label = CCMenuItemLabel::create(CCLabelTTF::create("방 만들기", "Helvetica", 32), menu_selector(RobbyScene::menuCloseCallback));
+    CCMenuItemLabel* label = CCMenuItemLabel::create(CCLabelTTF::create(_AtoU8("방 만들기"), "Helvetica", 32), this, menu_selector(RobbyScene::menuCloseCallback));
 	label->setPosition(ccp(900, 200));
 
-    CCMenu* pMenu = CCMenu::create(pCloseItem, NULL);
+    CCMenu* pMenu = CCMenu::create(pCloseItem, label, NULL);
     pMenu->setPosition( CCPointZero );
     this->addChild(pMenu, 1);
 
