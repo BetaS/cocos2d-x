@@ -81,6 +81,9 @@
     <ClCompile Include="..\Classes\ui\StringPopup.cpp">
       <Filter>Classes\ui</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\net\UDPClient.cpp">
+      <Filter>Classes\net</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -151,6 +154,9 @@
     </ClInclude>
     <ClInclude Include="..\Classes\ui\StringPopup.h">
       <Filter>Classes\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\net\UDPClient.h">
+      <Filter>Classes\net</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

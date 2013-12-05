@@ -1,4 +1,4 @@
-#ifndef __CCB_VALUE_H__
+﻿#ifndef __CCB_VALUE_H__
 #define __CCB_VALUE_H__
 
 #include "cocos2d.h"

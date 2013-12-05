@@ -2,6 +2,7 @@
 #include "RobbyScene.h"
 #include "AppDelegate.h"
 #include "net/RPCClient.h"
+#include "net/UDPClient.h"
 #include "json/JsonBox.h"
 
 USING_NS_CC;
@@ -37,6 +38,11 @@ bool LoginScene::init()
     {
         return false;
     }
+//
+//	string result;
+//	UDPClient client = UDPClient("localhost", 5400);
+//	client.request(result, "HEllO");
+//	CCMessageBox(result.c_str(), "TEST");
 
 //
 //	m_Popup = StringPopup::create();

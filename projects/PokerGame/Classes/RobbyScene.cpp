@@ -23,7 +23,7 @@ CCScene* RobbyScene::scene()
 bool RobbyScene::init()
 {
     bar = NULL;
-    if ( !CCLayerColor::initWithColor(ccc4(0, 0, 255, 255)) )
+    if ( !CCLayerColor::initWithColor(ccc4(0, 0, 0, 255)) )
     {
         return false;
     }
@@ -36,7 +36,9 @@ bool RobbyScene::init()
                                         menu_selector(RobbyScene::menuCloseCallback) );
     pCloseItem->setPosition( ccp(CCDirector::sharedDirector()->getWinSize().width - 20, 20) );
     
-    CCLabelTTF* label = CCLabelTTF::create("asd", "Helvetica", 32);
+    CCMenuItemLabel* label = CCMenuItemLabel::create(CCLabelTTF::create("방 만들기", "Helvetica", 32), menu_selector(RobbyScene::menuCloseCallback));
+	label->setPosition(ccp(900, 200));
+
     CCMenu* pMenu = CCMenu::create(pCloseItem, NULL);
     pMenu->setPosition( CCPointZero );
     this->addChild(pMenu, 1);

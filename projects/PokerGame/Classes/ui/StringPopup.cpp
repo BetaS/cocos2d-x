@@ -19,6 +19,6 @@ bool StringPopup::init()
 
 
 bool StringPopup::ccTouchBegan(cocos2d::CCTouch *touch, cocos2d::CCEvent *event) {
-	hidePopup();
+	//hidePopup();
 	return true;
 }
