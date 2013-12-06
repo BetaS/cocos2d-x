@@ -143,7 +143,7 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClCompile Include="..\Classes\LoginScene.cpp" />
     <ClCompile Include="..\Classes\net\DeviceInfo.cpp" />
     <ClCompile Include="..\Classes\net\RPCClient.cpp" />
-    <ClCompile Include="..\Classes\net\UDPClient.cpp" />
+    <ClCompile Include="..\Classes\net\GameClient.cpp" />
     <ClCompile Include="..\Classes\RobbyScene.cpp" />
     <ClCompile Include="..\Classes\ui\CustomTableViewCell.cpp" />
     <ClCompile Include="..\Classes\ui\ScrollBar.cpp" />
@@ -169,7 +169,7 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClInclude Include="..\Classes\LoginScene.h" />
     <ClInclude Include="..\Classes\net\DeviceInfo.h" />
     <ClInclude Include="..\Classes\net\RPCClient.h" />
-    <ClInclude Include="..\Classes\net\UDPClient.h" />
+    <ClInclude Include="..\Classes\net\GameClient.h" />
     <ClInclude Include="..\Classes\RobbyScene.h" />
     <ClInclude Include="..\Classes\ui\CustomTableViewCell.h" />
     <ClInclude Include="..\Classes\ui\ScrollBar.h" />

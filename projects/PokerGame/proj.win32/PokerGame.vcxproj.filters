@@ -81,7 +81,7 @@
     <ClCompile Include="..\Classes\ui\StringPopup.cpp">
       <Filter>Classes\ui</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\net\UDPClient.cpp">
+    <ClCompile Include="..\Classes\net\GameClient.cpp">
       <Filter>Classes\net</Filter>
     </ClCompile>
   </ItemGroup>
@@ -155,7 +155,7 @@
     <ClInclude Include="..\Classes\ui\StringPopup.h">
       <Filter>Classes\ui</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\net\UDPClient.h">
+    <ClInclude Include="..\Classes\net\GameClient.h">
       <Filter>Classes\net</Filter>
     </ClInclude>
   </ItemGroup>

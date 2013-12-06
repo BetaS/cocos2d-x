@@ -1,5 +1,8 @@
 ﻿#include "RobbyScene.h"
+#include "AppDelegate.h"
 #include "ui/CustomTableViewCell.h"
+#include "net/RPCClient.h"
+#include "net/GameClient.h"
 
 USING_NS_CC;
 USING_NS_CC_EXT;
@@ -36,7 +39,7 @@ bool RobbyScene::init()
                                         menu_selector(RobbyScene::menuCloseCallback) );
     pCloseItem->setPosition( ccp(CCDirector::sharedDirector()->getWinSize().width - 20, 20) );
     
-    CCMenuItemLabel* label = CCMenuItemLabel::create(CCLabelTTF::create(_AtoU8("방 만들기"), "Helvetica", 32), this, menu_selector(RobbyScene::menuCloseCallback));
+    CCMenuItemLabel* label = CCMenuItemLabel::create(CCLabelTTF::create(_AtoU8("방 만들기"), "Helvetica", 32), this, menu_selector(RobbyScene::menuCreateRoom));
 	label->setPosition(ccp(900, 200));
 
     CCMenu* pMenu = CCMenu::create(pCloseItem, label, NULL);
@@ -86,6 +89,16 @@ void RobbyScene::menuCloseCallback(CCObject* pSender)
 #endif
 }
 
+void RobbyScene::menuCreateRoom(CCObject* pSender)
+{
+	JsonBox::Value result;
+	JsonBox::Object params, device;
+	((AppDelegate*)CCApplication::sharedApplication())->getDeviceInfo()->getJSONString(device);
+
+	params["device"] = JsonBox::Value(device);
+
+	g_Server.request(result, "gameRoomCreate", params);
+}
 
 void RobbyScene::scrollViewDidScroll(CCScrollView* view) {
    if(bar != NULL) bar->setBarRefresh(view);

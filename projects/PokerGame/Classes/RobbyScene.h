@@ -15,6 +15,7 @@ public:
 	static cocos2d::CCScene* scene();
 
 	void menuCloseCallback(CCObject* pSender);
+	void menuCreateRoom(CCObject* pSender);
 	CREATE_FUNC(RobbyScene);
 
 private:

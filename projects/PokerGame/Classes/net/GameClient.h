@@ -1,6 +1,6 @@
 ﻿#pragma once
-#ifndef __UDPCLIENT_H__
-#define __UDPCLIENT_H__
+#ifndef __GAMECLIENT_H__
+#define __GAMECLIENT_H__
 
 #ifdef WIN32
 #include <winsock2.h>
@@ -16,7 +16,7 @@
 
 using namespace std;
 
-class UDPClient
+class GameClient
 {
 private:
 	void _setup();
@@ -25,8 +25,8 @@ private:
 	void _recv(string& str);
 
 public:
-	UDPClient(string host, int port);
-	virtual ~UDPClient(void);
+	GameClient(string host, int port);
+	virtual ~GameClient(void);
 
 private:
 	struct sockaddr_in m_Client;

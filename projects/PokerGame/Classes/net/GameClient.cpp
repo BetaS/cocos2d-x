@@ -1,7 +1,7 @@
-﻿#include "UDPClient.h"
+﻿#include "GameClient.h"
 #include "cocos2d.h"
 
-UDPClient::UDPClient(string host, int port)
+GameClient::GameClient(string host, int port)
 	:m_szHost(host), m_nPort(port)
 {
 #ifdef WIN32
@@ -12,14 +12,14 @@ UDPClient::UDPClient(string host, int port)
 }
 
 
-UDPClient::~UDPClient(void)
+GameClient::~GameClient(void)
 {
 #ifdef WIN32
 	WSACleanup();
 #endif
 }
 
-void UDPClient::_setup() {
+void GameClient::_setup() {
 	struct hostent * host = gethostbyname(m_szHost.c_str());
 
 	if ( (host == NULL) || (host->h_addr == NULL) ) {
@@ -31,7 +31,7 @@ void UDPClient::_setup() {
 	m_Client.sin_port = htons( m_nPort );
 	memcpy(&m_Client.sin_addr, host->h_addr, host->h_length);
 
-	m_nSock = socket(AF_INET, SOCK_DGRAM, 0);
+	m_nSock = socket(AF_INET, SOCK_STREAM, 0);
 
 	if (m_nSock < 0) {
 		cocos2d::CCLog("can not open socket.");
@@ -40,7 +40,7 @@ void UDPClient::_setup() {
 	_connect();
 }
 
-void UDPClient::_connect() {
+void GameClient::_connect() {
 	if ( connect(m_nSock, (struct sockaddr *)&m_Client, sizeof(m_Client)) < 0 ) {
 #ifdef WIN32
 		closesocket(m_nSock);
@@ -51,7 +51,7 @@ void UDPClient::_connect() {
 	}
 }
 
-bool UDPClient::_send(string data) {
+bool GameClient::_send(string data) {
 	cocos2d::CCLog("%s", data.c_str());
 
 	if (send(m_nSock, data.c_str(), data.length(), 0) != (int)data.length()) {
@@ -60,7 +60,7 @@ bool UDPClient::_send(string data) {
 	}
 	return true;
 }
-void UDPClient::_recv(string& str) {
+void GameClient::_recv(string& str) {
 	str = "";
 
 	char cur[1024]; int size=0;
@@ -79,7 +79,7 @@ void UDPClient::_recv(string& str) {
 	cocos2d::CCLog("result: %s", str.c_str());
 }
 
-void UDPClient::request(string& result, string data)
+void GameClient::request(string& result, string data)
 {
 	result = "";
 
