@@ -19,6 +19,15 @@ DeviceInfo::~DeviceInfo(void)
 {
 }
 
+void DeviceInfo::setAuthKey(string authkey)
+{
+	this->authkey = authkey;
+}
+string DeviceInfo::getAuthKey()
+{
+	return authkey;
+}
+
 void DeviceInfo::getJSONString(JsonBox::Object& dest)
 {
 	dest["code"] = JsonBox::Value(this->device_code);

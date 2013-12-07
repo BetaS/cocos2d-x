@@ -24,6 +24,9 @@ private:
 	int count;
 
 public:
+	void refreshDataList();
+	
+public:
 	//tabview
 	virtual void tableCellHighlight(CCTableView* table, CCTableViewCell* cell);
 	virtual void tableCellUnhighlight(CCTableView* table, CCTableViewCell* cell);

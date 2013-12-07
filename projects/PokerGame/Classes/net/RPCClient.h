@@ -17,7 +17,7 @@
 
 using namespace std;
 
-#define SERVER_PATH "localhost"
+#define SERVER_PATH "betas.iptime.org"
 #define SERVER_PORT 5303
 
 class RPCClient

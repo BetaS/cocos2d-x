@@ -1,11 +1,15 @@
 ﻿#include "RobbyScene.h"
-#include "AppDelegate.h"
 #include "ui/CustomTableViewCell.h"
 #include "net/RPCClient.h"
 #include "net/GameClient.h"
 
 USING_NS_CC;
 USING_NS_CC_EXT;
+
+enum Views
+{
+	vTableView
+};
 
 RobbyScene::~RobbyScene ()
 {
@@ -45,18 +49,10 @@ bool RobbyScene::init()
     CCMenu* pMenu = CCMenu::create(pCloseItem, label, NULL);
     pMenu->setPosition( CCPointZero );
     this->addChild(pMenu, 1);
-
+	
     datalist = CCArray::create();
     datalist->retain();
-    
-    count = 0;
-	for(int i=0; i < 20; i++) {
-		char str[10];
-		sprintf(str, "data %d", i);
-		datalist->addObject(CCString::create(str));
-        count++;
-    }
-    
+        
     CCTableView* tableView = CCTableView::create(this, CCSizeMake(720, 720));
     tableView->setDirection(kCCScrollViewDirectionVertical);
     tableView->setVerticalFillOrder(kCCTableViewFillTopDown);
@@ -65,20 +61,46 @@ bool RobbyScene::init()
     
     tableView->setDelegate(this);
 
-    this->addChild(tableView, 1);
+    this->addChild(tableView, 1, vTableView);
     tableView->reloadData();
-
+	
 	bar = ScrollBar::create(tableView, type_Vertical_in);
     
+	refreshDataList();
+	
     return true;
 }
-//
-//void RobbyScene::addDatalist(int num)
-//{
-//    char str[10] ;
-//    sprintf(str, "data %d", num);
-//    datalist->addObject(CCString::create(str));
-//}
+
+void RobbyScene::refreshDataList()
+{
+	datalist->removeAllObjects();
+	
+	JsonBox::Value result;
+	JsonBox::Object params;
+	
+	g_Server.request(result, "gameRoomList", params);
+	
+	if(result["result"]["code"].getInt() == 0)
+	{
+		count = 0;
+		CCLog("%d", result["result"]["size"].getInt());
+		
+		for(int i=0; i < result["result"]["size"].getInt(); i++) {
+			stringstream addr;
+			addr << result["result"]["items"][i]["addr"].getString() << ":" << result["result"]["items"][i]["port"].getInt();
+			
+			string session = result["result"]["items"][i]["room_id"].getString();
+			
+			
+			stringstream title;
+			title << "#" << i << " (" << session << ") - " << addr.str();
+			datalist->addObject(CCString::create(title.str()));
+			count++;
+		}
+	}
+	
+    ((CCTableView*)getChildByTag(vTableView))->reloadData();
+}
 
 void RobbyScene::menuCloseCallback(CCObject* pSender)
 {
@@ -92,12 +114,11 @@ void RobbyScene::menuCloseCallback(CCObject* pSender)
 void RobbyScene::menuCreateRoom(CCObject* pSender)
 {
 	JsonBox::Value result;
-	JsonBox::Object params, device;
-	((AppDelegate*)CCApplication::sharedApplication())->getDeviceInfo()->getJSONString(device);
-
-	params["device"] = JsonBox::Value(device);
+	JsonBox::Object params;
 
 	g_Server.request(result, "gameRoomCreate", params);
+	
+	refreshDataList();
 }
 
 void RobbyScene::scrollViewDidScroll(CCScrollView* view) {

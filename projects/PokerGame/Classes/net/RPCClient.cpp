@@ -1,4 +1,5 @@
 ﻿#include "RPCClient.h"
+#include "AppDelegate.h"
 #include "cocos2d.h"
 
 RPCClient g_Server(SERVER_PATH, SERVER_PORT);
@@ -103,7 +104,14 @@ void RPCClient::request(JsonBox::Value& json, char* method, JsonBox::Object para
 {
 	string result = "";
 	stringstream sstream("");
-
+	
+	DeviceInfo *dev = ((AppDelegate*)cocos2d::CCApplication::sharedApplication())->getDeviceInfo();
+	JsonBox::Object device;
+	dev->getJSONString(device);
+	
+	params["authkey"] = JsonBox::Value(dev->getAuthKey());
+	params["device"] = JsonBox::Value(device);
+	
 	JsonBox::Object data;
 	data["jsonrpc"] = JsonBox::Value("2.0");
 	data["id"] = JsonBox::Value("1");

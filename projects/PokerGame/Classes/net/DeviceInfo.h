@@ -16,6 +16,7 @@ public:
 	~DeviceInfo(void);
 
 private:
+	string authkey;
 	string device_code;
 	string device_type;
 	string os_type;
@@ -24,6 +25,8 @@ private:
 	string version;
 
 public:
+	string getAuthKey();
+	void setAuthKey(string authkey);
 	void getJSONString(JsonBox::Object& dest);
 };
 

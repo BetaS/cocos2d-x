@@ -18,7 +18,7 @@ ScrollBar::ScrollBar (CCScrollView* sv, int type) {
 
     float offset;
     if(type <= type_Vertical_out) {
-        bar = CCScale9Sprite::create("scroll/barV.png",
+        bar = CCScale9Sprite::create("barV.png",
                                      CCRectMake(0, 0, barFixSize, barMinSize),
                                      CCRectMake(1, 4, 8, 12));
 
@@ -34,7 +34,7 @@ ScrollBar::ScrollBar (CCScrollView* sv, int type) {
             this->setPosition((svPosition.x+svSize.width), svPosition.y);
         }
     } else {
-        bar = CCScale9Sprite::create("scroll/barH.png",
+        bar = CCScale9Sprite::create("barH.png",
                                      CCRectMake(0, 0, barMinSize, barFixSize),
                                      CCRectMake(4, 1, 12, 8));
 

@@ -1,8 +1,8 @@
 ﻿#include "LoginScene.h"
 #include "RobbyScene.h"
-#include "AppDelegate.h"
 #include "net/RPCClient.h"
 #include "json/JsonBox.h"
+#include "AppDelegate.h"
 
 USING_NS_CC;
 USING_NS_CC_EXT;
@@ -122,9 +122,8 @@ void LoginScene::menuRegisterCallback(CCObject* pSender)
 	CCEditBox* form_pw = (CCEditBox*)getChildByTag(vFormPW);
 
 	JsonBox::Value result;
-	JsonBox::Object params, device;
-	((AppDelegate*)CCApplication::sharedApplication())->getDeviceInfo()->getJSONString(device);
-
+	JsonBox::Object params;
+	
 	params["email"] = JsonBox::Value(form_id->getText());
 	params["pw"] = JsonBox::Value(form_pw->getText());
 	g_Server.request(result, "authUserRegister", params);
@@ -148,21 +147,19 @@ void LoginScene::menuLoginCallback(CCObject* pSender)
 	CCEditBox* form_pw = (CCEditBox*)getChildByTag(vFormPW);
 
 	JsonBox::Value result;
-	JsonBox::Object params, device;
-	((AppDelegate*)CCApplication::sharedApplication())->getDeviceInfo()->getJSONString(device);
+	JsonBox::Object params;
 
 	params["email"] = JsonBox::Value(form_id->getText());
 	params["pw"] = JsonBox::Value(form_pw->getText());
-	params["device"] = JsonBox::Value(device);
 	g_Server.request(result, "authUserLogin", params);
 
 	string authkey = (result["result"]["items"][size_t(0)]["authkey"]).getString();
 
 	if(&authkey != NULL && authkey.length() == 64)
 	{
+		((AppDelegate*)cocos2d::CCApplication::sharedApplication())->getDeviceInfo()->setAuthKey(authkey);
+		
 		params.clear();
-		params["authkey"] = JsonBox::Value(authkey);
-		params["device"] = JsonBox::Value(device);
 		g_Server.request(result, "authAuthenticate", params);
 
 		if((result["result"]["items"][size_t(0)]["result"]).getBoolean()) 
