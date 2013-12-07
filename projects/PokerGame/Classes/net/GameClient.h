@@ -20,7 +20,7 @@ class GameClient
 {
 private:
 	void _setup();
-	bool _send(string data);
+	bool _send(const char* data, size_t size);
 	void _recv(string& str);
 
 public:
@@ -34,7 +34,12 @@ private:
 	int m_nSock;
 
 public:
-	void request(string& result, string data);
+	void request(string& result, const char key[9], char type, string data);
 };
+
+extern GameClient *g_Client;
+
+#define TYPE_PING 0
+#define TYPE_JOIN 100
 
 #endif

@@ -13,7 +13,7 @@ public:
 	virtual ~GameRoomInfo();
 	
 private:
-	string key;
+	char key[9];
 	
 	string addr;
 	int port;
@@ -22,7 +22,7 @@ private:
 	int max_user;
 	
 public:
-	string getSessionKey() {return key;}
+	char* getSessionKey() {return key;}
 	
 	string getAddress() {return addr;}
 	int getPort() {return port;}

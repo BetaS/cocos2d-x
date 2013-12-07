@@ -10,7 +10,10 @@
 
 GameRoomInfo::GameRoomInfo(JsonBox::Value data)
 {
-	key = data["room_id"].getString();
+	string k = data["room_id"].getString();
+	
+	memcpy(key, k.c_str(), 8);
+	key[8] = '\0';
 	
 	addr = data["addr"].getString();
 	port = data["port"].getInt();

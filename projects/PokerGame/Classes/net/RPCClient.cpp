@@ -123,6 +123,8 @@ void RPCClient::request(JsonBox::Value& json, char* method, JsonBox::Object para
 //	_connect();
 	if(_send(sstream.str()))
 		_recv(result);
+	
+	sstream.flush();
 //	
 //#ifdef WIN32
 //	closesocket(m_nSock);

@@ -1,6 +1,8 @@
 ﻿#include "GameClient.h"
 #include "cocos2d.h"
 
+GameClient* g_Client;
+
 GameClient::GameClient(string host, int port)
 	:m_szHost(host), m_nPort(port)
 {
@@ -38,10 +40,10 @@ void GameClient::_setup() {
 	}
 }
 
-bool GameClient::_send(string data) {
-	cocos2d::CCLog("%s", data.c_str());
+bool GameClient::_send(const char* data, size_t size) {
+	cocos2d::CCLog("%s", data);
 
-	if(sendto(m_nSock, data.c_str(), data.length(), 0, (struct sockaddr*)&m_Client, sizeof(m_Client)) == -1) {
+	if(sendto(m_nSock, data, size, 0, (struct sockaddr*)&m_Client, sizeof(m_Client)) == -1) {
 		cocos2d::CCLog("can not send data");
 		return false;
 	}
@@ -67,10 +69,25 @@ void GameClient::_recv(string& str) {
 	cocos2d::CCLog("result: %s", str.c_str());
 }
 
-void GameClient::request(string& result, string data)
+void GameClient::request(string& result, const char key[9], char type, string data)
 {
 	result = "";
-
-	if(_send(data))
+	
+	int length = 9+data.length()+1;
+	char* packet = new char[length];
+	
+	for(int i=0; i<8; i++)
+		packet[i] = key[i];
+	packet[8] = type;
+	
+	const char* pData = data.c_str();
+	for(int i=0; i<data.length(); i++)
+		packet[9+i] = pData[i];
+	
+	packet[length-1] = '\0';
+	
+	if(_send(packet, length))
 		_recv(result);
+		
+	delete[] packet;
 }

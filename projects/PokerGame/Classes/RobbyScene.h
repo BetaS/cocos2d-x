@@ -28,6 +28,7 @@ private:
 
 public:
 	void refreshDataList();
+	void joinGameRoom(GameRoomInfo info);
 	
 public:
 	//tabview

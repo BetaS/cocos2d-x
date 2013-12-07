@@ -91,14 +91,32 @@ void RobbyScene::refreshDataList()
 			GameRoomInfo* pInfo = new GameRoomInfo(result["result"]["items"][i]);
 			roomData->push_back(pInfo);
 			
-			stringstream title;
+			stringstream title("");
 			title << "#" << i << " (" << pInfo->getSessionKey() << ") - " << pInfo->getAddress() << ":" << pInfo->getPort();
 			datalist->addObject(CCString::create(title.str()));
+			title.flush();
 			count++;
 		}
 	}
 	
     ((CCTableView*)getChildByTag(vTableView))->reloadData();
+}
+
+
+void RobbyScene::joinGameRoom(GameRoomInfo info)
+{
+	if(info.isFull())
+	{
+		CCMessageBox("Room is Full", "Error");
+		return;
+	}
+	
+	if(g_Client != NULL)
+		delete g_Client;
+	
+	string result;
+	g_Client = new GameClient(info.getAddress(), info.getPort());
+	g_Client->request(result, info.getSessionKey(), TYPE_JOIN, "");
 }
 
 void RobbyScene::menuCloseCallback(CCObject* pSender)
@@ -126,19 +144,7 @@ void RobbyScene::scrollViewDidScroll(CCScrollView* view) {
 
 void RobbyScene::tableCellTouched(CCTableView* table, CCTableViewCell* cell)
 {
-	GameRoomInfo* info = (*roomData)[cell->getIdx()];
-	
-	if(info->isFull())
-	{
-		CCMessageBox("Room is Full", "Error");
-		return;
-	}
-	
-	string result;
-	GameClient* client = new GameClient(info->getAddress(), info->getPort());
-	client->request(result, "ping");
-	
-	CCMessageBox(result.c_str(), "RETURN");
+	joinGameRoom(*(*roomData)[cell->getIdx()]);
 }
 
 void RobbyScene::tableCellHighlight(CCTableView* table, CCTableViewCell* cell)
