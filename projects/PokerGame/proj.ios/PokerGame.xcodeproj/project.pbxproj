@@ -271,6 +271,7 @@
 		ECEF390B1852EFBB00920BCC /* GameClient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECEF39091852EFBB00920BCC /* GameClient.cpp */; };
 		ECEF390E1852F16F00920BCC /* barH.png in Resources */ = {isa = PBXBuildFile; fileRef = ECEF390C1852F16F00920BCC /* barH.png */; };
 		ECEF390F1852F16F00920BCC /* barV.png in Resources */ = {isa = PBXBuildFile; fileRef = ECEF390D1852F16F00920BCC /* barV.png */; };
+		ECEF391218530F8A00920BCC /* GameRoomInfo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECEF391118530F8A00920BCC /* GameRoomInfo.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -824,6 +825,8 @@
 		ECEF390A1852EFBB00920BCC /* GameClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameClient.h; sourceTree = "<group>"; };
 		ECEF390C1852F16F00920BCC /* barH.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = barH.png; sourceTree = "<group>"; };
 		ECEF390D1852F16F00920BCC /* barV.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = barV.png; sourceTree = "<group>"; };
+		ECEF391018530DE800920BCC /* GameRoomInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameRoomInfo.h; sourceTree = "<group>"; };
+		ECEF391118530F8A00920BCC /* GameRoomInfo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameRoomInfo.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -977,6 +980,8 @@
 				ECEDFAF518411C990087F1C1 /* Card.h */,
 				ECEDFAF618411C990087F1C1 /* CardSlot.cpp */,
 				ECEDFAF718411C990087F1C1 /* CardSlot.h */,
+				ECEF391018530DE800920BCC /* GameRoomInfo.h */,
+				ECEF391118530F8A00920BCC /* GameRoomInfo.cpp */,
 			);
 			name = data;
 			path = ../Classes/data;
@@ -2242,6 +2247,7 @@
 				ECEF38DD1852EEE100920BCC /* b2WheelJoint.cpp in Sources */,
 				ECEF38F91852EEE100920BCC /* b2Rope.cpp in Sources */,
 				ECEF390B1852EFBB00920BCC /* GameClient.cpp in Sources */,
+				ECEF391218530F8A00920BCC /* GameRoomInfo.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

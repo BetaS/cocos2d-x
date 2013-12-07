@@ -34,7 +34,6 @@ bool RobbyScene::init()
     {
         return false;
     }
-    
 
     CCMenuItemImage *pCloseItem = CCMenuItemImage::create(
                                         "CloseNormal.png",
@@ -50,9 +49,11 @@ bool RobbyScene::init()
     pMenu->setPosition( CCPointZero );
     this->addChild(pMenu, 1);
 	
+	roomData = new vector<GameRoomInfo*>;
+	
     datalist = CCArray::create();
     datalist->retain();
-        
+	
     CCTableView* tableView = CCTableView::create(this, CCSizeMake(720, 720));
     tableView->setDirection(kCCScrollViewDirectionVertical);
     tableView->setVerticalFillOrder(kCCTableViewFillTopDown);
@@ -73,6 +74,7 @@ bool RobbyScene::init()
 
 void RobbyScene::refreshDataList()
 {
+	roomData->clear();
 	datalist->removeAllObjects();
 	
 	JsonBox::Value result;
@@ -86,14 +88,11 @@ void RobbyScene::refreshDataList()
 		CCLog("%d", result["result"]["size"].getInt());
 		
 		for(int i=0; i < result["result"]["size"].getInt(); i++) {
-			stringstream addr;
-			addr << result["result"]["items"][i]["addr"].getString() << ":" << result["result"]["items"][i]["port"].getInt();
-			
-			string session = result["result"]["items"][i]["room_id"].getString();
-			
+			GameRoomInfo* pInfo = new GameRoomInfo(result["result"]["items"][i]);
+			roomData->push_back(pInfo);
 			
 			stringstream title;
-			title << "#" << i << " (" << session << ") - " << addr.str();
+			title << "#" << i << " (" << pInfo->getSessionKey() << ") - " << pInfo->getAddress() << ":" << pInfo->getPort();
 			datalist->addObject(CCString::create(title.str()));
 			count++;
 		}
@@ -127,23 +126,25 @@ void RobbyScene::scrollViewDidScroll(CCScrollView* view) {
 
 void RobbyScene::tableCellTouched(CCTableView* table, CCTableViewCell* cell)
 {
-    CCPoint offset = table->getContentOffset();
-    CCSize contentSize = table->getContentSize();
-    CCSize tvSize = table->cocos2d::CCNode::getContentSize();
-    int p = cell->getIdx();
-    CCLOG("cell touched at index: %i, tv content size (%3.2f, %3.2f) tv size : (%3.2f, %3.2f)", p, contentSize.width, contentSize.height, tvSize.width, tvSize.height);
-    datalist->removeObjectAtIndex(p);
-    table->removeCellAtIndex(p);
-
-    table->reloadData();
-   
-	if(p > 4) table->setContentOffset(offset);
+	GameRoomInfo* info = (*roomData)[cell->getIdx()];
+	
+	if(info->isFull())
+	{
+		CCMessageBox("Room is Full", "Error");
+		return;
+	}
+	
+	string result;
+	GameClient* client = new GameClient(info->getAddress(), info->getPort());
+	client->request(result, "ping");
+	
+	CCMessageBox(result.c_str(), "RETURN");
 }
 
 void RobbyScene::tableCellHighlight(CCTableView* table, CCTableViewCell* cell)
 {
     CCLayerColor* mask;
-	mask = CCLayerColor::create(ccc4(200, 0, 0, 100), 200, 80);
+	mask = CCLayerColor::create(ccc4(180, 180, 0, 100), 720, 80);
     cell->addChild(mask,100, 44);
 }
 

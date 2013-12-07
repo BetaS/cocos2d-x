@@ -20,7 +20,6 @@ class GameClient
 {
 private:
 	void _setup();
-	void _connect();
 	bool _send(string data);
 	void _recv(string& str);
 

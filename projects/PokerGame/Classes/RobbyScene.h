@@ -4,6 +4,8 @@
 #include "cocos2d.h"
 #include "cocos-ext.h"
 #include "ui/ScrollBar.h"
+#include "GameRoomInfo.h"
+#include <vector>
 
 class RobbyScene : public cocos2d::CCLayerColor, public CCTableViewDataSource, public CCTableViewDelegate
 {
@@ -19,6 +21,7 @@ public:
 	CREATE_FUNC(RobbyScene);
 
 private:
+	vector<GameRoomInfo*> *roomData;
 	CCArray* datalist;
 	ScrollBar* bar;
 	int count;

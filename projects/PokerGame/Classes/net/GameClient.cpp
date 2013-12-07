@@ -31,35 +31,23 @@ void GameClient::_setup() {
 	m_Client.sin_port = htons( m_nPort );
 	memcpy(&m_Client.sin_addr, host->h_addr, host->h_length);
 
-	m_nSock = socket(AF_INET, SOCK_STREAM, 0);
+	m_nSock = socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP);
 
 	if (m_nSock < 0) {
 		cocos2d::CCLog("can not open socket.");
-	}
-
-	_connect();
-}
-
-void GameClient::_connect() {
-	if ( connect(m_nSock, (struct sockaddr *)&m_Client, sizeof(m_Client)) < 0 ) {
-#ifdef WIN32
-		closesocket(m_nSock);
-#else
-		close(m_nSock);
-#endif
-		cocos2d::CCLog("can not open connect");
 	}
 }
 
 bool GameClient::_send(string data) {
 	cocos2d::CCLog("%s", data.c_str());
 
-	if (send(m_nSock, data.c_str(), data.length(), 0) != (int)data.length()) {
+	if(sendto(m_nSock, data.c_str(), data.length(), 0, (struct sockaddr*)&m_Client, sizeof(m_Client)) == -1) {
 		cocos2d::CCLog("can not send data");
 		return false;
 	}
 	return true;
 }
+
 void GameClient::_recv(string& str) {
 	str = "";
 
