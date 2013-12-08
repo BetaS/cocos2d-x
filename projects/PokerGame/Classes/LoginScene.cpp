@@ -44,10 +44,6 @@ bool LoginScene::init()
 //	CCMessageBox(result.c_str(), "TEST");
 //
 //
-//	m_Popup = StringPopup::create();
-//	this->addChild(m_Popup, 99);
-//	m_Popup->setHideCallback(std::bind(&LoginScene::hidePopup, this));
-//	m_Popup->setVisible(false);
 
     CCSize visibleSize = CCDirector::sharedDirector()->getVisibleSize();
     CCPoint origin = CCDirector::sharedDirector()->getVisibleOrigin();
@@ -176,31 +172,3 @@ void LoginScene::menuLoginCallback(CCObject* pSender)
 		CCMessageBox("비밀번호가 일치하지 않습니다.", "ERROR");
 	}
 }
-/*
-void LoginScene::showPopup(string text) {
-	// Remove the scene from the touch dispatcher to prevent anything behind the
-	// popup from receiving touches.
-	CCDirector::sharedDirector()->getTouchDispatcher()->removeDelegate(this);
-	CCDirector::sharedDirector()->getTouchDispatcher()->removeDelegate(pMenu);
-
-	((CCEditBox*)this->getChildByTag(vFormID))->setTouchEnabled(false);
-	((CCEditBox*)this->getChildByTag(vFormPW))->setTouchEnabled(false);
-
-	// Show the popup.
-	m_Popup->setVisible(true);
-	CCDirector::sharedDirector()->getTouchDispatcher()->addTargetedDelegate(m_Popup, 0, true);
-}
-
-void LoginScene::hidePopup() {
-	// Hide the popup again.
-	m_Popup->setVisible(false);
-	CCDirector::sharedDirector()->getTouchDispatcher()->removeDelegate(m_Popup);
-
-	// Add this scene to the touch dispatcher again so that we enable all our touch input.
-	CCDirector::sharedDirector()->getTouchDispatcher()->addTargetedDelegate(this, 0, true);
-	CCDirector::sharedDirector()->getTouchDispatcher()->addTargetedDelegate(pMenu, kCCMenuHandlerPriority, true);
-
-	((CCEditBox*)this->getChildByTag(vFormID))->setTouchEnabled(true);
-	((CCEditBox*)this->getChildByTag(vFormPW))->setTouchEnabled(true);
-}
-*/

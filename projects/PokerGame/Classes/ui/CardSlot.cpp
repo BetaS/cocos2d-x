@@ -18,6 +18,21 @@ CardSlot::~CardSlot()
 	delete [] m_CardSprites;
 }
 
+cocos2d::CCScene* CardSlot::scene()
+{
+	// 'scene' is an autorelease object
+	cocos2d::CCScene *scene = cocos2d::CCScene::create();
+	
+	// 'layer' is an autorelease object
+	CardSlot *layer = CardSlot::create();
+	
+	// add layer as a child to scene
+	scene->addChild(layer);
+	
+	// return the scene
+	return scene;
+}
+
 bool CardSlot::init()
 {
 	bool bRet = false;
@@ -31,21 +46,6 @@ bool CardSlot::init()
 	} while (0);
 
 	return bRet;
-}
-
-cocos2d::CCScene* CardSlot::scene()
-{
-	// 'scene' is an autorelease object
-	cocos2d::CCScene *scene = cocos2d::CCScene::create();
-
-	// 'layer' is an autorelease object
-	CardSlot *layer = CardSlot::create();
-
-	// add layer as a child to scene
-	scene->addChild(layer);
-
-	// return the scene
-	return scene;
 }
 
 void CardSlot::setSlotSize(int nSize) 
@@ -66,14 +66,31 @@ void CardSlot::setSlotSize(int nSize)
 	setContentSize(ccp(m_nSize*165, 230));
 	cocos2d::CCLog("%f, %f", getContentSize().width, getContentSize().height);
 	setAnchorPoint(ccp(0.5f, 0.5f));
+	
+	update();
 }
 
 void CardSlot::update()
 {
 	for(int i=0; i<m_nSize; i++)
 	{
-		int row = m_Cards[i].getSuit()-1;
-		int col = m_Cards[i].getRank()-2;
+		int row = 0, col = 0;
+	
+		if(m_Cards[i].getSuit() == -1 || m_Cards[i].getRank() == -1)
+		{
+			row = 4;
+			col = 0;
+		}
+		else if(m_Cards[i].getSuit() == 0 || m_Cards[i].getRank() == 0)
+		{
+			row = 4;
+			col = 1;
+		}
+		else
+		{
+			row = m_Cards[i].getSuit()-1;
+			col = m_Cards[i].getRank()-2;
+		}
 		
 		m_CardSprites[i]->setTextureRect(cocos2d::CCRect(col*165, row*230, 165, 230));
 	}

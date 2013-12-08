@@ -10,7 +10,11 @@
 
 void Card::setCard(const char name[2])
 {
-	if(name[1] == 's')
+	if(name[1] == ' ')
+		m_nSuit = -1;
+	else if(name[1] == 'x')
+		m_nSuit = 0;
+	else if(name[1] == 's')
 		m_nSuit = 1;
 	else if(name[1] == 'h')
 		m_nSuit = 2;
@@ -19,7 +23,11 @@ void Card::setCard(const char name[2])
 	else if(name[1] == 'c')
 		m_nSuit = 4;
 	
-	if(name[0] == 'T')
+	if(name[0] == ' ')
+		m_nRank = -1;
+	else if(name[0] == 'X')
+		m_nRank = 0;
+	else if(name[0] == 'T')
 		m_nRank = 10;
 	else if(name[0] == 'J')
 		m_nRank = 11;
@@ -35,7 +43,11 @@ void Card::setCard(const char name[2])
 
 void Card::getCard(char*& dest)
 {
-	if(m_nSuit == 1)
+	if(m_nSuit == -1)
+		dest[1] = ' ';
+	if(m_nSuit == 0)
+		dest[1] = 'x';
+	else if(m_nSuit == 1)
 		dest[1] = 's';
 	else if(m_nSuit == 2)
 		dest[1] = 'h';
@@ -44,7 +56,11 @@ void Card::getCard(char*& dest)
 	else if(m_nSuit == 4)
 		dest[1] = 'c';
 	
-	if(m_nRank == 10)
+	if(m_nRank == -1)
+		dest[0] = ' ';
+	else if(m_nRank == 0)
+		dest[0] = 'X';
+	else if(m_nRank == 10)
 		dest[0] = 'T';
 	else if(m_nRank == 11)
 		dest[0] = 'J';

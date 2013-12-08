@@ -2,6 +2,7 @@
 #include "ui/CustomTableViewCell.h"
 #include "net/RPCClient.h"
 #include "net/GameClient.h"
+#include "GameScene.h"
 
 USING_NS_CC;
 USING_NS_CC_EXT;
@@ -117,6 +118,15 @@ void RobbyScene::joinGameRoom(GameRoomInfo info)
 	string result;
 	g_Client = new GameClient(info.getAddress(), info.getPort());
 	g_Client->request(result, info.getSessionKey(), TYPE_JOIN, "");
+	
+	if(result == "ok")
+	{
+		CCDirector::sharedDirector()->replaceScene(CCTransitionFade::create(0.5f, GameScene::scene(info.getSessionKey())));
+	}
+	else
+	{
+		CCMessageBox("Can't join the room", "Error");
+	}
 }
 
 void RobbyScene::menuCloseCallback(CCObject* pSender)

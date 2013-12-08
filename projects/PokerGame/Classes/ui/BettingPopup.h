@@ -3,17 +3,17 @@
 
 USING_NS_CC;
 
-class StringPopup: public CCLayerColor
+class BettingPopup: public CCLayerColor
 {
-private:
-	//std::function<void(void)> hidePopup;
-
 public:
 	virtual bool init();
 
-	virtual bool ccTouchBegan(cocos2d::CCTouch *touch, cocos2d::CCEvent *event);
-
-	//void setHideCallback(std::function<void(void)> callback) {this->hidePopup = callback;}
-
-	CREATE_FUNC(StringPopup);
+	virtual bool ccTouchBegan(CCTouch *touch, CCEvent *event);
+	
+	void menuBtnCall(CCObject* pSender);
+	void menuBtnDouble(CCObject* pSender);
+	void menuBtnCheck(CCObject* pSender);
+	void menuBtnDie(CCObject* pSender);
+	
+	CREATE_FUNC(BettingPopup);
 };

@@ -39,7 +39,6 @@
 		ECEDFAF118411C770087F1C1 /* intro_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = ECEDFAEE18411C770087F1C1 /* intro_bg.png */; };
 		ECEDFAF218411C770087F1C1 /* table_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = ECEDFAEF18411C770087F1C1 /* table_bg.png */; };
 		ECEDFB0118411C990087F1C1 /* Card.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECEDFAF418411C990087F1C1 /* Card.cpp */; };
-		ECEDFB0218411C990087F1C1 /* CardSlot.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECEDFAF618411C990087F1C1 /* CardSlot.cpp */; };
 		ECEDFB0318411C990087F1C1 /* GameScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECEDFAF818411C990087F1C1 /* GameScene.cpp */; };
 		ECEDFB0418411C990087F1C1 /* LoginScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECEDFAFA18411C990087F1C1 /* LoginScene.cpp */; };
 		ECEDFB0518411C990087F1C1 /* DeviceInfo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECEDFAFD18411C990087F1C1 /* DeviceInfo.cpp */; };
@@ -47,7 +46,7 @@
 		ECEF34FE1852E9AB00920BCC /* RobbyScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECEF34FC1852E9AB00920BCC /* RobbyScene.cpp */; };
 		ECEF35061852E9B400920BCC /* CustomTableViewCell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECEF35001852E9B400920BCC /* CustomTableViewCell.cpp */; };
 		ECEF35071852E9B400920BCC /* ScrollBar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECEF35021852E9B400920BCC /* ScrollBar.cpp */; };
-		ECEF35081852E9B400920BCC /* StringPopup.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECEF35041852E9B400920BCC /* StringPopup.cpp */; };
+		ECEF35081852E9B400920BCC /* BettingPopup.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECEF35041852E9B400920BCC /* BettingPopup.cpp */; };
 		ECEF351E1852E9BF00920BCC /* Array.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECEF350A1852E9BF00920BCC /* Array.cpp */; };
 		ECEF351F1852E9BF00920BCC /* Convert.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECEF350B1852E9BF00920BCC /* Convert.cpp */; };
 		ECEF35201852E9BF00920BCC /* Escaper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECEF350C1852E9BF00920BCC /* Escaper.cpp */; };
@@ -272,6 +271,7 @@
 		ECEF390E1852F16F00920BCC /* barH.png in Resources */ = {isa = PBXBuildFile; fileRef = ECEF390C1852F16F00920BCC /* barH.png */; };
 		ECEF390F1852F16F00920BCC /* barV.png in Resources */ = {isa = PBXBuildFile; fileRef = ECEF390D1852F16F00920BCC /* barV.png */; };
 		ECEF391218530F8A00920BCC /* GameRoomInfo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECEF391118530F8A00920BCC /* GameRoomInfo.cpp */; };
+		ECEF39151853F8CA00920BCC /* CardSlot.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECEF39131853F8CA00920BCC /* CardSlot.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -345,8 +345,6 @@
 		ECEDFAEF18411C770087F1C1 /* table_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = table_bg.png; sourceTree = "<group>"; };
 		ECEDFAF418411C990087F1C1 /* Card.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Card.cpp; sourceTree = "<group>"; };
 		ECEDFAF518411C990087F1C1 /* Card.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Card.h; sourceTree = "<group>"; };
-		ECEDFAF618411C990087F1C1 /* CardSlot.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CardSlot.cpp; sourceTree = "<group>"; };
-		ECEDFAF718411C990087F1C1 /* CardSlot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardSlot.h; sourceTree = "<group>"; };
 		ECEDFAF818411C990087F1C1 /* GameScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GameScene.cpp; path = ../Classes/GameScene.cpp; sourceTree = "<group>"; };
 		ECEDFAF918411C990087F1C1 /* GameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameScene.h; path = ../Classes/GameScene.h; sourceTree = "<group>"; };
 		ECEDFAFA18411C990087F1C1 /* LoginScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = LoginScene.cpp; path = ../Classes/LoginScene.cpp; sourceTree = "<group>"; };
@@ -361,8 +359,8 @@
 		ECEF35011852E9B400920BCC /* CustomTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTableViewCell.h; sourceTree = "<group>"; };
 		ECEF35021852E9B400920BCC /* ScrollBar.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ScrollBar.cpp; sourceTree = "<group>"; };
 		ECEF35031852E9B400920BCC /* ScrollBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScrollBar.h; sourceTree = "<group>"; };
-		ECEF35041852E9B400920BCC /* StringPopup.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StringPopup.cpp; sourceTree = "<group>"; };
-		ECEF35051852E9B400920BCC /* StringPopup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StringPopup.h; sourceTree = "<group>"; };
+		ECEF35041852E9B400920BCC /* BettingPopup.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BettingPopup.cpp; sourceTree = "<group>"; };
+		ECEF35051852E9B400920BCC /* BettingPopup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BettingPopup.h; sourceTree = "<group>"; };
 		ECEF350A1852E9BF00920BCC /* Array.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Array.cpp; sourceTree = "<group>"; };
 		ECEF350B1852E9BF00920BCC /* Convert.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Convert.cpp; sourceTree = "<group>"; };
 		ECEF350C1852E9BF00920BCC /* Escaper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Escaper.cpp; sourceTree = "<group>"; };
@@ -827,6 +825,8 @@
 		ECEF390D1852F16F00920BCC /* barV.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = barV.png; sourceTree = "<group>"; };
 		ECEF391018530DE800920BCC /* GameRoomInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameRoomInfo.h; sourceTree = "<group>"; };
 		ECEF391118530F8A00920BCC /* GameRoomInfo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameRoomInfo.cpp; sourceTree = "<group>"; };
+		ECEF39131853F8CA00920BCC /* CardSlot.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CardSlot.cpp; sourceTree = "<group>"; };
+		ECEF39141853F8CA00920BCC /* CardSlot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardSlot.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -978,10 +978,8 @@
 			children = (
 				ECEDFAF418411C990087F1C1 /* Card.cpp */,
 				ECEDFAF518411C990087F1C1 /* Card.h */,
-				ECEDFAF618411C990087F1C1 /* CardSlot.cpp */,
-				ECEDFAF718411C990087F1C1 /* CardSlot.h */,
-				ECEF391018530DE800920BCC /* GameRoomInfo.h */,
 				ECEF391118530F8A00920BCC /* GameRoomInfo.cpp */,
+				ECEF391018530DE800920BCC /* GameRoomInfo.h */,
 			);
 			name = data;
 			path = ../Classes/data;
@@ -1008,8 +1006,10 @@
 				ECEF35011852E9B400920BCC /* CustomTableViewCell.h */,
 				ECEF35021852E9B400920BCC /* ScrollBar.cpp */,
 				ECEF35031852E9B400920BCC /* ScrollBar.h */,
-				ECEF35041852E9B400920BCC /* StringPopup.cpp */,
-				ECEF35051852E9B400920BCC /* StringPopup.h */,
+				ECEF35041852E9B400920BCC /* BettingPopup.cpp */,
+				ECEF35051852E9B400920BCC /* BettingPopup.h */,
+				ECEF39131853F8CA00920BCC /* CardSlot.cpp */,
+				ECEF39141853F8CA00920BCC /* CardSlot.h */,
 			);
 			name = ui;
 			path = ../Classes/ui;
@@ -2025,7 +2025,6 @@
 				1AC3624B16D4A1E8000847F2 /* main.m in Sources */,
 				1AFCDA8216D4A25900906EA6 /* RootViewController.mm in Sources */,
 				ECEDFB0118411C990087F1C1 /* Card.cpp in Sources */,
-				ECEDFB0218411C990087F1C1 /* CardSlot.cpp in Sources */,
 				ECEDFB0318411C990087F1C1 /* GameScene.cpp in Sources */,
 				ECEDFB0418411C990087F1C1 /* LoginScene.cpp in Sources */,
 				ECEDFB0518411C990087F1C1 /* DeviceInfo.cpp in Sources */,
@@ -2033,7 +2032,7 @@
 				ECEF34FE1852E9AB00920BCC /* RobbyScene.cpp in Sources */,
 				ECEF35061852E9B400920BCC /* CustomTableViewCell.cpp in Sources */,
 				ECEF35071852E9B400920BCC /* ScrollBar.cpp in Sources */,
-				ECEF35081852E9B400920BCC /* StringPopup.cpp in Sources */,
+				ECEF35081852E9B400920BCC /* BettingPopup.cpp in Sources */,
 				ECEF351E1852E9BF00920BCC /* Array.cpp in Sources */,
 				ECEF351F1852E9BF00920BCC /* Convert.cpp in Sources */,
 				ECEF35201852E9BF00920BCC /* Escaper.cpp in Sources */,
@@ -2248,6 +2247,7 @@
 				ECEF38F91852EEE100920BCC /* b2Rope.cpp in Sources */,
 				ECEF390B1852EFBB00920BCC /* GameClient.cpp in Sources */,
 				ECEF391218530F8A00920BCC /* GameRoomInfo.cpp in Sources */,
+				ECEF39151853F8CA00920BCC /* CardSlot.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

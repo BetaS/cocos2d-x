@@ -50,6 +50,8 @@ class CC_DLL CCTime
 public:
     static int gettimeofdayCocos2d(struct cc_timeval *tp, void *tzp);
     static double timersubCocos2d(struct cc_timeval *start, struct cc_timeval *end);
+	
+	static unsigned int getTickCount();
 };
 
 // end of platform group

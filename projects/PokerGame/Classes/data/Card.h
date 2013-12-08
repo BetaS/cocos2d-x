@@ -12,7 +12,7 @@
 class Card
 {	
 public:
-	Card(): m_nSuit(0), m_nRank(0) {}
+	Card(): m_nSuit(-1), m_nRank(-1) {}
 	virtual ~Card() {}
 
 private:

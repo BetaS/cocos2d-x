@@ -48,4 +48,11 @@ double CCTime::timersubCocos2d(struct cc_timeval *start, struct cc_timeval *end)
     return ((end->tv_sec*1000.0+end->tv_usec/1000.0) - (start->tv_sec*1000.0+start->tv_usec/1000.0));
 }
 
+unsigned int CCTime::getTickCount()
+{	
+	struct cc_timeval getTick;
+	CCTime::gettimeofdayCocos2d( &getTick, 0 );
+	return getTick.tv_sec * 1000 + getTick.tv_usec / 1000;
+}
+
 NS_CC_END
