@@ -10,7 +10,7 @@
 #define __PokerGame__CardSlot__
 
 #include "cocos2d.h"
-#include "data/Card.h"
+#include "../data/Card.h"
 
 class CardSlot: public cocos2d::CCLayer
 {

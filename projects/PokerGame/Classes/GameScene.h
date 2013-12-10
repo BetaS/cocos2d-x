@@ -21,8 +21,10 @@ private:
 	CCLabelTTF* pLabelPlayerMoney[4];
 	CCLabelTTF* pLabelPlayerStatus[4];
 
-	pthread_mutex_t mutex;
 	pthread_t thread;
+
+	int mStatus;
+	int myIdx;
 
 public:
 	GameScene();
@@ -30,9 +32,10 @@ public:
 	
     // Here's a difference. Method 'init' in cocos2d-x returns bool, instead of returning 'id' in cocos2d-iphone
     virtual bool init(); 
+	void initPlayerUI();
 
     // there's no 'id' in cpp, so we recommend returning the class instance pointer
-	static cocos2d::CCScene* scene(const char* key, std::string name, int money);
+	static cocos2d::CCScene* scene(const char* key, int idx, std::string name, int money);
 
 	// a selector callback
 	void menuCloseCallback(CCObject* pSender);
@@ -65,7 +68,7 @@ private:
 	BettingPopup* pPopup;
 
 public:
-	void showPopup();
+	void showPopup(int amount);
 	void hidePopup(CCObject* pSender);
 };
 

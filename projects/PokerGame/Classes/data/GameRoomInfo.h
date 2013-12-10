@@ -1,7 +1,7 @@
 #ifndef __GAMEROOMINFO__
 #define __GAMEROOMINFO__
 
-#include "JsonBox.h"
+#include "../json/JsonBox.h"
 #include <string>
 
 using namespace std;

@@ -14,16 +14,16 @@ bool BettingPopup::init()
 
 	setTouchEnabled(true);
 	
-    CCMenuItemLabel* label1 = CCMenuItemLabel::create(CCLabelTTF::create(_AtoU8("Call\n($0)"), "Helvetica", 32), this, menu_selector(BettingPopup::menuBtnCall));
+    label1 = CCMenuItemLabel::create(CCLabelTTF::create(_AtoU8("Call\n($0)"), "Helvetica", 32), this, menu_selector(BettingPopup::menuBtnCall));
 	label1->setPosition(ccp(-90, 75));
 	
-    CCMenuItemLabel* label2 = CCMenuItemLabel::create(CCLabelTTF::create(_AtoU8("Double\n($0)"), "Helvetica", 32), this, menu_selector(BettingPopup::menuBtnDouble));
+    label2 = CCMenuItemLabel::create(CCLabelTTF::create(_AtoU8("Double\n($0)"), "Helvetica", 32), this, menu_selector(BettingPopup::menuBtnDouble));
 	label2->setPosition(ccp(90, 75));
 	
-    CCMenuItemLabel* label3 = CCMenuItemLabel::create(CCLabelTTF::create(_AtoU8("Check\n($0)"), "Helvetica", 32), this, menu_selector(BettingPopup::menuBtnCheck));
+    label3 = CCMenuItemLabel::create(CCLabelTTF::create(_AtoU8("Check\n($0)"), "Helvetica", 32), this, menu_selector(BettingPopup::menuBtnCheck));
 	label3->setPosition(ccp(-90, -75));
 	
-    CCMenuItemLabel* label4 = CCMenuItemLabel::create(CCLabelTTF::create(_AtoU8("Die\n"), "Helvetica", 32), this, menu_selector(BettingPopup::menuBtnDie));
+    label4 = CCMenuItemLabel::create(CCLabelTTF::create(_AtoU8("Die\n"), "Helvetica", 32), this, menu_selector(BettingPopup::menuBtnDie));
 	label4->setPosition(ccp(90, -75));
 	
     // create menu, it's an autorelease object
@@ -33,6 +33,16 @@ bool BettingPopup::init()
 
 
 	return initWithColor(ccc4(0,0,0,150), winSize.width, winSize.height);
+}
+
+void BettingPopup::setAmount(int amount)
+{
+	char str[128];
+	sprintf(str, "Call\n($%d)", amount);
+	label1->setString(str);
+
+	sprintf(str, "Double\n($%d)", amount*2);
+	label2->setString(str);
 }
 
 bool BettingPopup::ccTouchBegan(CCTouch *touch, CCEvent *event)

@@ -1133,6 +1133,16 @@
 			<locationURI>PARENT-1-PROJECT_LOC/support/CCNotificationCenter.h</locationURI>
 		</link>
 		<link>
+			<name>src/support/CCNotificationHandler.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/support/CCNotificationHandler.cpp</locationURI>
+		</link>
+		<link>
+			<name>src/support/CCNotificationHandler.h</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/support/CCNotificationHandler.h</locationURI>
+		</link>
+		<link>
 			<name>src/support/CCPointExtension.cpp</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/support/CCPointExtension.cpp</locationURI>

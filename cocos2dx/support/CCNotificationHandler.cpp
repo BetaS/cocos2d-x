@@ -10,9 +10,8 @@ void CCNotificationHandler::postNotificationOnMainThread(const char *name, CCObj
 	CCObject *target = new CCNotificationHandler(name, object);
 	target->retain();
 	target->autorelease();
-	SEL_SCHEDULE selector = schedule_selector(CCNotificationHandler::postNotification);
 
-	CCDirector::sharedDirector()->getScheduler()->scheduleSelector(selector, target, 0, 0, 0, false);
+	CCDirector::sharedDirector()->getScheduler()->scheduleSelector(schedule_selector(CCNotificationHandler::postNotification), target, 0, 0, 0, false);
 }
 
 CCNotificationHandler::~CCNotificationHandler()
@@ -27,9 +26,9 @@ CCNotificationHandler::CCNotificationHandler(const char *name, CCObject *object)
 	if (_object) _object->retain();
 }
 
-void CCNotificationHandler::postNotification()
+void CCNotificationHandler::postNotification(float dt)
 {
 	CCNotificationCenter::sharedNotificationCenter()->postNotification(_name.c_str(), _object);
-	this->release();
+//	this->autorelease();
 	// CCTimer will unschedule this selector later, and 'this' will be autoreleased by main loop
 }

@@ -997,7 +997,7 @@ CCObject* CCBSoundEffect::copyWithZone(CCZone *pZone)
 
 void CCBSoundEffect::update(float time)
 {
-    CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(mSoundFile.c_str());
+    //CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(mSoundFile.c_str());
 }
 
 

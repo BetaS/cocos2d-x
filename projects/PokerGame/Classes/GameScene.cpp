@@ -5,16 +5,19 @@
 
 USING_NS_CC;
 
-#define TYPE_CALL 0
+#define TYPE_CALL	0
 #define TYPE_DOUBLE 1
-#define TYPE_CHECK 2
-#define TYPE_DIE 3
+#define TYPE_CHECK	2
+#define TYPE_DIE	3
+
+#define IDX(i) (myIdx+i)%4
 
 GameScene::GameScene()
 {
 	totalBetting = 0;
-	mutex = PTHREAD_MUTEX_INITIALIZER;
-	ZeroMemory(key, 8);
+	myIdx = 0;
+	mStatus = 0;
+	memset(key, 0, 8);
 }
 
 GameScene::~GameScene()
@@ -22,7 +25,7 @@ GameScene::~GameScene()
 	pthread_detach(thread);
 }
 
-CCScene* GameScene::scene(const char* key, string name, int money)
+CCScene* GameScene::scene(const char* key, int idx, string name, int money)
 {
     // 'scene' is an autorelease object
     CCScene *scene = CCScene::create();
@@ -30,9 +33,12 @@ CCScene* GameScene::scene(const char* key, string name, int money)
     // 'layer' is an autorelease object
     GameScene *layer = GameScene::create();
 	memcpy(layer->key, key, 8);
+	layer->myIdx = idx;
+
 	layer->player_info[0].setPlayerName(name);
 	layer->player_info[0].setMoney(money);
 
+	layer->initPlayerUI();
 	layer->updatePlayerInfo();
 
     // add layer as a child to scene
@@ -116,48 +122,53 @@ bool GameScene::init()
 		pLabelPlayerStatus[i]->setColor(ccc3(200, 200, 200));
 		this->addChild(pLabelPlayerStatus[i], 2);
 	}
-
-	player_slot[0]->setScale(0.65f);
-	player_slot[0]->setPosition(ccp(visibleSize.width/2, 0+player_slot[0]->getContentSize().height*player_slot[0]->getScale()/2));
-	pLabelPlayerName[0]->setAnchorPoint(ccp(1.0, 0));
-	pLabelPlayerName[0]->setPosition(ccp(visibleSize.width/2-220, 0+player_slot[0]->getContentSize().height*player_slot[0]->getScale()/2+20));
-	pLabelPlayerMoney[0]->setAnchorPoint(ccp(1.0, 0));
-	pLabelPlayerMoney[0]->setPosition(ccp(visibleSize.width/2-220, 0+player_slot[0]->getContentSize().height*player_slot[0]->getScale()/2-15));
-	pLabelPlayerStatus[0]->setAnchorPoint(ccp(1.0, 0));
-	pLabelPlayerStatus[0]->setPosition(ccp(visibleSize.width/2-220, 0+player_slot[0]->getContentSize().height*player_slot[0]->getScale()/2-40));
-
-	player_slot[1]->setScale(0.6f);
-	player_slot[1]->setPosition(ccp(0+player_slot[1]->getContentSize().height*player_slot[1]->getScale()/2, visibleSize.height/2));
-	player_slot[1]->setRotation(-90);
-	pLabelPlayerName[1]->setAnchorPoint(ccp(0, 0));
-	pLabelPlayerName[1]->setPosition(ccp(10, visibleSize.height/2+255));
-	pLabelPlayerMoney[1]->setAnchorPoint(ccp(0, 0));
-	pLabelPlayerMoney[1]->setPosition(ccp(10, visibleSize.height/2+225));
-	pLabelPlayerStatus[1]->setAnchorPoint(ccp(0, 0));
-	pLabelPlayerStatus[1]->setPosition(ccp(10, visibleSize.height/2+200));
-
-	player_slot[2]->setScale(0.6f);
-	player_slot[2]->setPosition(ccp(visibleSize.width/2, visibleSize.height-player_slot[2]->getContentSize().height*player_slot[2]->getScale()/2));
-	pLabelPlayerName[2]->setAnchorPoint(ccp(0, 0));
-	pLabelPlayerName[2]->setPosition(ccp(visibleSize.width/2+205, visibleSize.height-player_slot[2]->getContentSize().height*player_slot[2]->getScale()/2+20));
-	pLabelPlayerMoney[2]->setAnchorPoint(ccp(0, 0));
-	pLabelPlayerMoney[2]->setPosition(ccp(visibleSize.width/2+205, visibleSize.height-player_slot[2]->getContentSize().height*player_slot[2]->getScale()/2-15));
-	pLabelPlayerStatus[2]->setAnchorPoint(ccp(0, 0));
-	pLabelPlayerStatus[2]->setPosition(ccp(visibleSize.width/2+205, visibleSize.height-player_slot[2]->getContentSize().height*player_slot[2]->getScale()/2-40));
-
-	player_slot[3]->setScale(0.6f);
-	player_slot[3]->setPosition(ccp(visibleSize.width-player_slot[3]->getContentSize().height*player_slot[3]->getScale()/2, visibleSize.height/2));
-	player_slot[3]->setRotation(90);
-	pLabelPlayerName[3]->setAnchorPoint(ccp(1.0, 0));
-	pLabelPlayerName[3]->setPosition(ccp(visibleSize.width-10, visibleSize.height/2+255));
-	pLabelPlayerMoney[3]->setAnchorPoint(ccp(1.0, 0));
-	pLabelPlayerMoney[3]->setPosition(ccp(visibleSize.width-10, visibleSize.height/2+225));
-	pLabelPlayerStatus[3]->setAnchorPoint(ccp(1.0, 0));
-	pLabelPlayerStatus[3]->setPosition(ccp(visibleSize.width-10, visibleSize.height/2+200));
 	
 	pthread_create(&thread, NULL, _heartbeat, this);
 
     return true;
+}
+
+void GameScene::initPlayerUI()
+{
+	CCSize visibleSize = CCDirector::sharedDirector()->getVisibleSize();
+
+	player_slot[IDX(0)]->setScale(0.65f);
+	player_slot[IDX(0)]->setPosition(ccp(visibleSize.width/2, 0+player_slot[IDX(0)]->getContentSize().height*player_slot[IDX(0)]->getScale()/2));
+	pLabelPlayerName[IDX(0)]->setAnchorPoint(ccp(1.0, 0));
+	pLabelPlayerName[IDX(0)]->setPosition(ccp(visibleSize.width/2-220, 0+player_slot[IDX(0)]->getContentSize().height*player_slot[IDX(0)]->getScale()/2+20));
+	pLabelPlayerMoney[IDX(0)]->setAnchorPoint(ccp(1.0, 0));
+	pLabelPlayerMoney[IDX(0)]->setPosition(ccp(visibleSize.width/2-220, 0+player_slot[IDX(0)]->getContentSize().height*player_slot[IDX(0)]->getScale()/2-15));
+	pLabelPlayerStatus[IDX(0)]->setAnchorPoint(ccp(1.0, 0));
+	pLabelPlayerStatus[IDX(0)]->setPosition(ccp(visibleSize.width/2-220, 0+player_slot[IDX(0)]->getContentSize().height*player_slot[IDX(0)]->getScale()/2-40));
+
+	player_slot[IDX(1)]->setScale(0.6f);
+	player_slot[IDX(1)]->setPosition(ccp(0+player_slot[IDX(1)]->getContentSize().height*player_slot[IDX(1)]->getScale()/2, visibleSize.height/2));
+	player_slot[IDX(1)]->setRotation(-90);
+	pLabelPlayerName[IDX(1)]->setAnchorPoint(ccp(0, 0));
+	pLabelPlayerName[IDX(1)]->setPosition(ccp(10, visibleSize.height/2+255));
+	pLabelPlayerMoney[IDX(1)]->setAnchorPoint(ccp(0, 0));
+	pLabelPlayerMoney[IDX(1)]->setPosition(ccp(10, visibleSize.height/2+225));
+	pLabelPlayerStatus[IDX(1)]->setAnchorPoint(ccp(0, 0));
+	pLabelPlayerStatus[IDX(1)]->setPosition(ccp(10, visibleSize.height/2+200));
+
+	player_slot[IDX(2)]->setScale(0.6f);
+	player_slot[IDX(2)]->setPosition(ccp(visibleSize.width/2, visibleSize.height-player_slot[IDX(2)]->getContentSize().height*player_slot[IDX(2)]->getScale()/2));
+	pLabelPlayerName[IDX(2)]->setAnchorPoint(ccp(0, 0));
+	pLabelPlayerName[IDX(2)]->setPosition(ccp(visibleSize.width/2+205, visibleSize.height-player_slot[IDX(2)]->getContentSize().height*player_slot[IDX(2)]->getScale()/2+20));
+	pLabelPlayerMoney[IDX(2)]->setAnchorPoint(ccp(0, 0));
+	pLabelPlayerMoney[IDX(2)]->setPosition(ccp(visibleSize.width/2+205, visibleSize.height-player_slot[IDX(2)]->getContentSize().height*player_slot[IDX(2)]->getScale()/2-15));
+	pLabelPlayerStatus[IDX(2)]->setAnchorPoint(ccp(0, 0));
+	pLabelPlayerStatus[IDX(2)]->setPosition(ccp(visibleSize.width/2+205, visibleSize.height-player_slot[IDX(2)]->getContentSize().height*player_slot[IDX(2)]->getScale()/2-40));
+
+	player_slot[IDX(3)]->setScale(0.6f);
+	player_slot[IDX(3)]->setPosition(ccp(visibleSize.width-player_slot[IDX(3)]->getContentSize().height*player_slot[IDX(3)]->getScale()/2, visibleSize.height/2));
+	player_slot[IDX(3)]->setRotation(90);
+	pLabelPlayerName[IDX(3)]->setAnchorPoint(ccp(1.0, 0));
+	pLabelPlayerName[IDX(3)]->setPosition(ccp(visibleSize.width-10, visibleSize.height/2+255));
+	pLabelPlayerMoney[IDX(3)]->setAnchorPoint(ccp(1.0, 0));
+	pLabelPlayerMoney[IDX(3)]->setPosition(ccp(visibleSize.width-10, visibleSize.height/2+225));
+	pLabelPlayerStatus[IDX(3)]->setAnchorPoint(ccp(1.0, 0));
+	pLabelPlayerStatus[IDX(3)]->setPosition(ccp(visibleSize.width-10, visibleSize.height/2+200));
 }
 
 void GameScene::onMessage(CCObject* obj)
@@ -182,6 +193,48 @@ void GameScene::onMessage(CCObject* obj)
 		player_info[idx].setMoney(atoi(elems[2].c_str()));
 
 		updatePlayerInfo();
+	} 
+	else if(typ == TYPE_STATUS)
+	{
+		mStatus = atoi(data.c_str());
+	}
+	else if(typ == TYPE_DRAW_CARD)
+	{
+		vector<string> elems;
+		stringstream ss(data);
+		string item;
+		while (std::getline(ss, item, '|')) {
+			elems.push_back(item);
+		}
+		ss.flush();
+
+		if(elems[0] == "t")
+		{
+			for(int i=1; i<elems.size(); i++)
+				common_slot->setCard(i-1, elems[i].c_str());
+		}
+		else
+		{
+			int idx = atoi(elems[0].c_str());
+			for(int i=1; i<elems.size(); i++)
+				player_slot[IDX(idx)]->setCard(i-1, elems[i].c_str());
+		}
+	} 
+	else if(typ == TYPE_MYTURN)
+	{
+		showPopup(atoi(data.c_str()));
+	}
+	else if(typ == TYPE_BETTING)
+	{
+		vector<string> elems;
+		stringstream ss(data);
+		string item;
+		while (std::getline(ss, item, '|')) {
+			elems.push_back(item);
+		}
+		ss.flush();
+
+		betting(atoi(elems[0].c_str()), atoi(elems[1].c_str()), atoi(elems[2].c_str()));
 	}
 }
 
@@ -248,7 +301,7 @@ void GameScene::updatePlayerInfo()
 		pLabelPlayerStatus[i]->setString(szOption);
 	}
 
-	pLabelPlayerName[0]->setString(player_info[0].getPlayerName().c_str());
+	pLabelPlayerName[IDX(0)]->setString(player_info[IDX(0)].getPlayerName().c_str());
 }
 
 void GameScene::betting(int player, int type, int amount)
@@ -256,14 +309,14 @@ void GameScene::betting(int player, int type, int amount)
 	if(type == TYPE_CALL || type == TYPE_DOUBLE)
 	{
 		totalBetting += amount;
-		player_info[player].betting(type, amount);
+		player_info[IDX(player)].betting(type, amount);
 
 		char szAmount[128];
 		sprintf(szAmount, "%d$", amount);
 
 		CCLabelTTF* ttf = CCLabelTTF::create(szAmount, "Helvetica", 38);
 		ttf->setColor(ccc3(200, 200, 0));
-		ttf->setPosition(ccp(player_slot[player]->getPositionX(), player_slot[player]->getPositionY()));
+		ttf->setPosition(ccp(player_slot[IDX(player)]->getPositionX(), player_slot[IDX(player)]->getPositionY()));
 		addChild(ttf, 3);
 
 		CCSize visibleSize = CCDirector::sharedDirector()->getVisibleSize();
@@ -323,28 +376,34 @@ void GameScene::menuCloseCallback(CCObject* pSender)
 #endif
 }
 
-void GameScene::showPopup() {
+void GameScene::showPopup(int amount) {
 	// Remove the scene from the touch dispatcher to prevent anything behind the
 	// popup from receiving touches.
-	CCDirector::sharedDirector()->getTouchDispatcher()->removeDelegate(this);
-	CCDirector::sharedDirector()->getTouchDispatcher()->removeDelegate(pMenu);
+	if(!pPopup->isVisible())
+	{
+		CCDirector::sharedDirector()->getTouchDispatcher()->removeDelegate(this);
+		CCDirector::sharedDirector()->getTouchDispatcher()->removeDelegate(pMenu);
  
-	// Show the popup.
-	pPopup->setVisible(true);
-	CCDirector::sharedDirector()->getTouchDispatcher()->addTargetedDelegate(pPopup, 0, true);
+		// Show the popup.
+		pPopup->setAmount(amount);
+		pPopup->setVisible(true);
+		CCDirector::sharedDirector()->getTouchDispatcher()->addTargetedDelegate(pPopup, 0, true);
+	}
 }
  
 void GameScene::hidePopup(CCObject* pSender) {
 	// Hide the popup again.
-	pPopup->setVisible(false);
-	CCDirector::sharedDirector()->getTouchDispatcher()->removeDelegate(pPopup);
+	if(pPopup->isVisible())
+	{
+		pPopup->setVisible(false);
+		CCDirector::sharedDirector()->getTouchDispatcher()->removeDelegate(pPopup);
  
-	// Add this scene to the touch dispatcher again so that we enable all our touch input.
-	CCDirector::sharedDirector()->getTouchDispatcher()->addTargetedDelegate(this, 0, true);
-	CCDirector::sharedDirector()->getTouchDispatcher()->addTargetedDelegate(pMenu, kCCMenuHandlerPriority, true);
+		// Add this scene to the touch dispatcher again so that we enable all our touch input.
+		CCDirector::sharedDirector()->getTouchDispatcher()->addTargetedDelegate(this, 0, true);
+		CCDirector::sharedDirector()->getTouchDispatcher()->addTargetedDelegate(pMenu, kCCMenuHandlerPriority, true);
 
-	int val = ((CCInteger*)pSender)->getValue();
-
+		int val = ((CCInteger*)pSender)->getValue();
+	}
 }
  
 // 서버로 일정 시간마다 패킷을 보냄
@@ -358,7 +417,7 @@ void* _heartbeat(void* args)
 	{
 		unsigned int now = CCTime::getTickCount();
 
-		if((now - past) > 500) // 2fps로 게임정보 갱신
+		if((now - past) > 200) // 2fps로 게임정보 갱신
 		{
 			string result;
 			g_Client->request(result, scene->getRoomID(), TYPE_PING, "");

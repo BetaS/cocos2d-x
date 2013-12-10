@@ -1,5 +1,5 @@
 ﻿#include "RPCClient.h"
-#include "AppDelegate.h"
+#include "../AppDelegate.h"
 #include "cocos2d.h"
 
 RPCClient g_Server(SERVER_PATH, SERVER_PORT);
@@ -119,18 +119,11 @@ void RPCClient::request(JsonBox::Value& json, char* method, JsonBox::Object para
 	data["params"] = JsonBox::Value(params);
 
 	sstream << data;
-//
-//	_connect();
+
 	if(_send(sstream.str()))
 		_recv(result);
 	
 	sstream.flush();
-//	
-//#ifdef WIN32
-//	closesocket(m_nSock);
-//#else
-//	close(m_nSock);
-//#endif
 
 	json.loadFromString(result);
 }

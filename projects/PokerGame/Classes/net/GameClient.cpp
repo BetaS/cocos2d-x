@@ -1,5 +1,5 @@
 ﻿#include "GameClient.h"
-#include "AppDelegate.h"
+#include "../AppDelegate.h"
 #include "cocos2d.h"
 
 GameClient* g_Client;

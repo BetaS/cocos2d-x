@@ -39,7 +39,12 @@ public:
 
 extern GameClient *g_Client;
 
-#define TYPE_PING 0
-#define TYPE_JOIN 100
+#define TYPE_PING		0
+#define TYPE_STATUS		1
+#define TYPE_JOIN		100
+#define TYPE_LEAVE		101
+#define TYPE_MYTURN		103
+#define TYPE_DRAW_CARD	111
+#define TYPE_BETTING	112
 
 #endif

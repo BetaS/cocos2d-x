@@ -129,7 +129,7 @@ void RobbyScene::joinGameRoom(GameRoomInfo info)
 
 	if(elems[0] == "ok")
 	{
-		CCDirector::sharedDirector()->replaceScene(CCTransitionFade::create(0.5f, GameScene::scene(info.getSessionKey(), elems[1], atoi(elems[2].c_str()))));
+		CCDirector::sharedDirector()->replaceScene(CCTransitionFade::create(0.5f, GameScene::scene(info.getSessionKey(), atoi(elems[1].c_str()), elems[2], atoi(elems[3].c_str()))));
 	}
 	else
 	{

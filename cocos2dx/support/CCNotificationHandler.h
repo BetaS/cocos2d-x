@@ -22,7 +22,7 @@ private:
 
 	~CCNotificationHandler();
 	CCNotificationHandler(const char *name, CCObject *object);
-	void postNotification();
+	void postNotification(float dt);
 
 };
 

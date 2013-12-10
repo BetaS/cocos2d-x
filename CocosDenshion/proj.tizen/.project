@@ -88,6 +88,11 @@
 	</natures>
 	<linkedResources>
 		<link>
+			<name>src/Export.h</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/include/Export.h</locationURI>
+		</link>
+		<link>
 			<name>src/OspPlayer.cpp</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/tizen/OspPlayer.cpp</locationURI>
@@ -101,6 +106,11 @@
 			<name>src/SimpleAudioEngine.cpp</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/tizen/SimpleAudioEngine.cpp</locationURI>
+		</link>
+		<link>
+			<name>src/SimpleAudioEngine.h</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/include/SimpleAudioEngine.h</locationURI>
 		</link>
 	</linkedResources>
 </projectDescription>

@@ -98,11 +98,6 @@
 			<locationURI>PARENT-1-PROJECT_LOC/CCBReader</locationURI>
 		</link>
 		<link>
-			<name>src/CocoStudio</name>
-			<type>2</type>
-			<locationURI>PARENT-1-PROJECT_LOC/CocoStudio</locationURI>
-		</link>
-		<link>
 			<name>src/ExtensionMacros.h</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/ExtensionMacros.h</locationURI>

@@ -38,13 +38,6 @@ bool LoginScene::init()
         return false;
     }
 
-//	string result;
-//	GameClient client = GameClient("localhost", 15400);
-//	client.request(result, "HEllO");
-//	CCMessageBox(result.c_str(), "TEST");
-//
-//
-
     CCSize visibleSize = CCDirector::sharedDirector()->getVisibleSize();
     CCPoint origin = CCDirector::sharedDirector()->getVisibleOrigin();
 
