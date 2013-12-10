@@ -474,6 +474,9 @@
     <ClCompile Include="..\support\component\CCComponentContainer.cpp">
       <Filter>support\component</Filter>
     </ClCompile>
+    <ClCompile Include="..\support\CCNotificationHandler.cpp">
+      <Filter>support</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\base_nodes\CCAtlasNode.h">
@@ -954,6 +957,9 @@
     </ClInclude>
     <ClInclude Include="..\include\MultiByteConverter.h">
       <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\support\CCNotificationHandler.h">
+      <Filter>support</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

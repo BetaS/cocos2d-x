@@ -258,6 +258,7 @@ THE SOFTWARE.
 // support
 #include "support/ccUTF8.h"
 #include "support/CCNotificationCenter.h"
+#include "support/CCNotificationHandler.h"
 #include "support/CCPointExtension.h"
 #include "support/CCProfiling.h"
 #include "support/user_default/CCUserDefault.h"

@@ -118,10 +118,18 @@ void RobbyScene::joinGameRoom(GameRoomInfo info)
 	string result;
 	g_Client = new GameClient(info.getAddress(), info.getPort());
 	g_Client->request(result, info.getSessionKey(), TYPE_JOIN, "");
-	
-	if(result == "ok")
+
+	vector<string> elems;
+	stringstream ss(result);
+	string item;
+	while (std::getline(ss, item, '|')) {
+		elems.push_back(item);
+	}
+	ss.flush();
+
+	if(elems[0] == "ok")
 	{
-		CCDirector::sharedDirector()->replaceScene(CCTransitionFade::create(0.5f, GameScene::scene(info.getSessionKey())));
+		CCDirector::sharedDirector()->replaceScene(CCTransitionFade::create(0.5f, GameScene::scene(info.getSessionKey(), elems[1], atoi(elems[2].c_str()))));
 	}
 	else
 	{

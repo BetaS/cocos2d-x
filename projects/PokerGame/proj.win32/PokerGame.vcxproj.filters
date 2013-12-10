@@ -27,9 +27,6 @@
     <ClCompile Include="..\Classes\AppDelegate.cpp">
       <Filter>Classes</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\data\CardSlot.cpp">
-      <Filter>Classes\data</Filter>
-    </ClCompile>
     <ClCompile Include="..\Classes\data\Card.cpp">
       <Filter>Classes\data</Filter>
     </ClCompile>
@@ -78,11 +75,20 @@
     <ClCompile Include="..\Classes\json\Convert.cpp">
       <Filter>Classes\net\json</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\ui\StringPopup.cpp">
-      <Filter>Classes\ui</Filter>
-    </ClCompile>
     <ClCompile Include="..\Classes\net\GameClient.cpp">
       <Filter>Classes\net</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ui\BettingPopup.cpp">
+      <Filter>Classes\ui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ui\CardSlot.cpp">
+      <Filter>Classes\ui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\data\GameRoomInfo.cpp">
+      <Filter>Classes\data</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\data\PlayerInfo.cpp">
+      <Filter>Classes\data</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -93,9 +99,6 @@
       <Filter>Classes</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\data\Card.h">
-      <Filter>Classes\data</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\data\CardSlot.h">
       <Filter>Classes\data</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\net\RPCClient.h">
@@ -152,11 +155,25 @@
     <ClInclude Include="..\Classes\json\JsonBox\IndentCanceller.h">
       <Filter>Classes\net\json</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\ui\StringPopup.h">
-      <Filter>Classes\ui</Filter>
-    </ClInclude>
     <ClInclude Include="..\Classes\net\GameClient.h">
       <Filter>Classes\net</Filter>
     </ClInclude>
+    <ClInclude Include="..\Classes\ui\BettingPopup.h">
+      <Filter>Classes\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ui\CardSlot.h">
+      <Filter>Classes\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\data\GameRoomInfo.h">
+      <Filter>Classes\data</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\data\PlayerInfo.h">
+      <Filter>Classes\data</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram1.cd" />
+    <None Include="ClassDiagram2.cd" />
+    <None Include="ClassDiagram3.cd" />
   </ItemGroup>
 </Project>

@@ -1,4 +1,4 @@
-//
+﻿//
 //  CardSlot.h
 //  PokerGame
 //
@@ -10,7 +10,7 @@
 #define __PokerGame__CardSlot__
 
 #include "cocos2d.h"
-#include "Card.h"
+#include "data/Card.h"
 
 class CardSlot: public cocos2d::CCLayer
 {

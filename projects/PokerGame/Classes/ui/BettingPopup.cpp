@@ -32,7 +32,7 @@ bool BettingPopup::init()
     this->addChild(pMenu, 99);
 
 
-	return initWithColor(ccc4(0,0,0,80), winSize.width, winSize.height);
+	return initWithColor(ccc4(0,0,0,150), winSize.width, winSize.height);
 }
 
 bool BettingPopup::ccTouchBegan(CCTouch *touch, CCEvent *event)
@@ -42,20 +42,20 @@ bool BettingPopup::ccTouchBegan(CCTouch *touch, CCEvent *event)
 
 void BettingPopup::menuBtnCall(CCObject* pSender)
 {
-	CCNotificationCenter::sharedNotificationCenter()->postNotification("betting", pSender);
+	CCNotificationCenter::sharedNotificationCenter()->postNotification("betting", CCInteger::create(0));
 }
 
 void BettingPopup::menuBtnDouble(CCObject* pSender)
 {
-	CCNotificationCenter::sharedNotificationCenter()->postNotification("betting", pSender);
+	CCNotificationCenter::sharedNotificationCenter()->postNotification("betting", CCInteger::create(1));
 }
 
 void BettingPopup::menuBtnCheck(CCObject* pSender)
 {
-	CCNotificationCenter::sharedNotificationCenter()->postNotification("betting", pSender);
+	CCNotificationCenter::sharedNotificationCenter()->postNotification("betting", CCInteger::create(2));
 }
 
 void BettingPopup::menuBtnDie(CCObject* pSender)
 {
-	CCNotificationCenter::sharedNotificationCenter()->postNotification("betting", pSender);
+	CCNotificationCenter::sharedNotificationCenter()->postNotification("betting", CCInteger::create(3));
 }

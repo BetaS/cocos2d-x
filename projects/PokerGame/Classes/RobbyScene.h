@@ -4,7 +4,7 @@
 #include "cocos2d.h"
 #include "cocos-ext.h"
 #include "ui/ScrollBar.h"
-#include "GameRoomInfo.h"
+#include "data/GameRoomInfo.h"
 #include <vector>
 
 class RobbyScene : public cocos2d::CCLayerColor, public CCTableViewDataSource, public CCTableViewDelegate

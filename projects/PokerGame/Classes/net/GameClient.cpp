@@ -34,7 +34,12 @@ void GameClient::_setup() {
 	m_Client.sin_port = htons( m_nPort );
 	memcpy(&m_Client.sin_addr, host->h_addr, host->h_length);
 
+	struct timeval tv;
+	tv.tv_sec = 0;
+	tv.tv_usec = 500;
+
 	m_nSock = socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP);
+	setsockopt(m_nSock, SOL_SOCKET, SO_RCVTIMEO, (char*)&tv, sizeof(tv));
 
 	if (m_nSock < 0) {
 		cocos2d::CCLog("can not open socket.");
