@@ -110,6 +110,7 @@ sprite_nodes/CCSpriteFrame.cpp \
 sprite_nodes/CCSpriteFrameCache.cpp \
 support/ccUTF8.cpp \
 support/CCNotificationCenter.cpp \
+support/CCNotificationHandler.cpp \
 support/CCProfiling.cpp \
 support/CCPointExtension.cpp \
 support/TransformUtils.cpp \

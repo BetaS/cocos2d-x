@@ -8,7 +8,28 @@ LOCAL_MODULE_FILENAME := libcocos2dcpp
 
 LOCAL_SRC_FILES := hellocpp/main.cpp \
                    ../../Classes/AppDelegate.cpp \
-                   ../../Classes/HelloWorldScene.cpp
+                   ../../Classes/GameScene.cpp \
+                   ../../Classes/LoginScene.cpp \
+                   ../../Classes/RobbyScene.cpp \
+                   ../../Classes/data/Card.cpp \
+                   ../../Classes/data/GameRoomInfo.cpp \
+                   ../../Classes/data/PlayerInfo.cpp \
+                   ../../Classes/json/Array.cpp \
+                   ../../Classes/json/Convert.cpp \
+                   ../../Classes/json/Escaper.cpp \
+                   ../../Classes/json/IndentCanceller.cpp \
+                   ../../Classes/json/Indenter.cpp \
+                   ../../Classes/json/Object.cpp \
+                   ../../Classes/json/SolidusEscaper.cpp \
+                   ../../Classes/json/Value.cpp \
+                   ../../Classes/net/DeviceInfo.cpp \
+                   ../../Classes/net/GameClient.cpp \
+                   ../../Classes/net/RPCClient.cpp \
+                   ../../Classes/ui/BettingPopup.cpp \
+                   ../../Classes/ui/CardSlot.cpp \
+                   ../../Classes/ui/CustomTableViewCell.cpp \
+                   ../../Classes/ui/ScrollBar.cpp
+
 
 LOCAL_C_INCLUDES := $(LOCAL_PATH)/../../Classes
 

@@ -32,9 +32,8 @@
 		D4EF949C15BD2D8E00D803EB /* Icon-114.png in Resources */ = {isa = PBXBuildFile; fileRef = D4EF949B15BD2D8E00D803EB /* Icon-114.png */; };
 		D4EF949E15BD2D9600D803EB /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = D4EF949D15BD2D9600D803EB /* Icon-72.png */; };
 		D4EF94A015BD2D9800D803EB /* Icon-144.png in Resources */ = {isa = PBXBuildFile; fileRef = D4EF949F15BD2D9800D803EB /* Icon-144.png */; };
-		ECA0C801182E293E00BFAF82 /* card_back_blue.png in Resources */ = {isa = PBXBuildFile; fileRef = ECA0C7CB182E293E00BFAF82 /* card_back_blue.png */; };
-		ECA0C802182E293E00BFAF82 /* card_back_red.png in Resources */ = {isa = PBXBuildFile; fileRef = ECA0C7CC182E293E00BFAF82 /* card_back_red.png */; };
 		ECA0C814182E3BED00BFAF82 /* card_deck.png in Resources */ = {isa = PBXBuildFile; fileRef = ECA0C813182E3BED00BFAF82 /* card_deck.png */; };
+		ECA3AFC918582F8B00437546 /* PlayerInfo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECA3AFC718582F8B00437546 /* PlayerInfo.cpp */; };
 		ECEDFAF018411C770087F1C1 /* green_edit.png in Resources */ = {isa = PBXBuildFile; fileRef = ECEDFAED18411C770087F1C1 /* green_edit.png */; };
 		ECEDFAF118411C770087F1C1 /* intro_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = ECEDFAEE18411C770087F1C1 /* intro_bg.png */; };
 		ECEDFAF218411C770087F1C1 /* table_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = ECEDFAEF18411C770087F1C1 /* table_bg.png */; };
@@ -337,9 +336,9 @@
 		D4EF949D15BD2D9600D803EB /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-72.png"; path = "../proj.ios/Icon-72.png"; sourceTree = "<group>"; };
 		D4EF949F15BD2D9800D803EB /* Icon-144.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-144.png"; path = "../proj.ios/Icon-144.png"; sourceTree = "<group>"; };
 		D4F9F37B12E54555005CA6D2 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = SOURCE_ROOT; };
-		ECA0C7CB182E293E00BFAF82 /* card_back_blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = card_back_blue.png; sourceTree = "<group>"; };
-		ECA0C7CC182E293E00BFAF82 /* card_back_red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = card_back_red.png; sourceTree = "<group>"; };
 		ECA0C813182E3BED00BFAF82 /* card_deck.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = card_deck.png; sourceTree = "<group>"; };
+		ECA3AFC718582F8B00437546 /* PlayerInfo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PlayerInfo.cpp; sourceTree = "<group>"; };
+		ECA3AFC818582F8B00437546 /* PlayerInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerInfo.h; sourceTree = "<group>"; };
 		ECEDFAED18411C770087F1C1 /* green_edit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = green_edit.png; sourceTree = "<group>"; };
 		ECEDFAEE18411C770087F1C1 /* intro_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = intro_bg.png; sourceTree = "<group>"; };
 		ECEDFAEF18411C770087F1C1 /* table_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = table_bg.png; sourceTree = "<group>"; };
@@ -950,8 +949,6 @@
 				ECEF390C1852F16F00920BCC /* barH.png */,
 				ECEF390D1852F16F00920BCC /* barV.png */,
 				ECA0C813182E3BED00BFAF82 /* card_deck.png */,
-				ECA0C7CB182E293E00BFAF82 /* card_back_blue.png */,
-				ECA0C7CC182E293E00BFAF82 /* card_back_red.png */,
 				ECEF35321852ED5F00920BCC /* btn_login.png */,
 				ECEF35331852ED5F00920BCC /* btn_signup.png */,
 				ECEF35341852ED5F00920BCC /* form_input.png */,
@@ -976,6 +973,8 @@
 		ECEDFAF318411C990087F1C1 /* data */ = {
 			isa = PBXGroup;
 			children = (
+				ECA3AFC718582F8B00437546 /* PlayerInfo.cpp */,
+				ECA3AFC818582F8B00437546 /* PlayerInfo.h */,
 				ECEDFAF418411C990087F1C1 /* Card.cpp */,
 				ECEDFAF518411C990087F1C1 /* Card.h */,
 				ECEF391118530F8A00920BCC /* GameRoomInfo.cpp */,
@@ -1997,8 +1996,6 @@
 				D446FD6E16102124000ADA7B /* Default@2x.png in Resources */,
 				1AFAF8BC16D35E4900DB1158 /* CloseNormal.png in Resources */,
 				1AFAF8BD16D35E4900DB1158 /* CloseSelected.png in Resources */,
-				ECA0C801182E293E00BFAF82 /* card_back_blue.png in Resources */,
-				ECA0C802182E293E00BFAF82 /* card_back_red.png in Resources */,
 				ECA0C814182E3BED00BFAF82 /* card_deck.png in Resources */,
 				ECEDFAF018411C770087F1C1 /* green_edit.png in Resources */,
 				ECEDFAF118411C770087F1C1 /* intro_bg.png in Resources */,
@@ -2248,6 +2245,7 @@
 				ECEF390B1852EFBB00920BCC /* GameClient.cpp in Sources */,
 				ECEF391218530F8A00920BCC /* GameRoomInfo.cpp in Sources */,
 				ECEF39151853F8CA00920BCC /* CardSlot.cpp in Sources */,
+				ECA3AFC918582F8B00437546 /* PlayerInfo.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

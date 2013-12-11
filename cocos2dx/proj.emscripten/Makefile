@@ -92,6 +92,7 @@ SOURCES = ../actions/CCAction.cpp \
 ../support/ccUtils.cpp \
 ../support/CCVertex.cpp \
 ../support/CCNotificationCenter.cpp \
+../support/CCNotificationHandler.cpp \
 ../support/image_support/TGAlib.cpp \
 ../support/tinyxml2/tinyxml2.cpp \
 ../support/zip_support/ZipUtils.cpp \
