@@ -217,7 +217,7 @@ void GameScene::onMessage(CCObject* obj)
 		{
 			int idx = atoi(elems[0].c_str());
 			for(int i=1; i<elems.size(); i++)
-				player_slot[IDX(idx)]->setCard(i-1, elems[i].c_str());
+				player_slot[idx]->setCard(i-1, elems[i].c_str());
 		}
 	} 
 	else if(typ == TYPE_MYTURN)
@@ -309,14 +309,14 @@ void GameScene::betting(int player, int type, int amount)
 	if(type == TYPE_CALL || type == TYPE_DOUBLE)
 	{
 		totalBetting += amount;
-		player_info[IDX(player)].betting(type, amount);
+		player_info[player].betting(type, amount);
 
 		char szAmount[128];
 		sprintf(szAmount, "%d$", amount);
 
 		CCLabelTTF* ttf = CCLabelTTF::create(szAmount, "Helvetica", 38);
 		ttf->setColor(ccc3(200, 200, 0));
-		ttf->setPosition(ccp(player_slot[IDX(player)]->getPositionX(), player_slot[IDX(player)]->getPositionY()));
+		ttf->setPosition(ccp(player_slot[player]->getPositionX(), player_slot[player]->getPositionY()));
 		addChild(ttf, 3);
 
 		CCSize visibleSize = CCDirector::sharedDirector()->getVisibleSize();
@@ -403,6 +403,11 @@ void GameScene::hidePopup(CCObject* pSender) {
 		CCDirector::sharedDirector()->getTouchDispatcher()->addTargetedDelegate(pMenu, kCCMenuHandlerPriority, true);
 
 		int val = ((CCInteger*)pSender)->getValue();
+		char data[128];
+		sprintf(data, "%d", val);
+
+		string result;
+		g_Client->request(result, getRoomID(), 101, string(data));
 	}
 }
  

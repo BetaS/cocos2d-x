@@ -1,4 +1,4 @@
-#ifndef __GAMEROOMINFO__
+﻿#ifndef __GAMEROOMINFO__
 #define __GAMEROOMINFO__
 
 #include "../json/JsonBox.h"
